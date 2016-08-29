@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const superagent = require('superagent');
 const redis = require('redis');
 var config = require('../config.js');
 
@@ -11,87 +12,87 @@ console.log(config.redis.pwd);
 /* GET home page. */
 router.get('/', function(req, res, next) {
  console.log('初始页');
- // var isPhone = true;
- var isPhone = false;
- var agentID = req.headers['user-agent'].toLowerCase().search(/(iphone|ipod|ipad|android)/);
- if (agentID) {
-     isPhone = true;
- } else {
-     isPhone = false;
- }
- var openid = req.query.openid || '';
- var access_token = req.query.access_token || '';
- superagent
-     .get('https://api.weixin.qq.com/sns/userinfo?access_token=' + access_token + '&openid=' + openid + '&lang=zh_CN')
-     .end(function(err, res4) {
-         if (res4.text.indexOf('errcode') > 0 && isPhone) {
-             var state = encodeURIComponent(('/'+req.url).split('&openid')[0]);
-             // var state = encodeURIComponent('/pay/pay?id=960'.split('&openid')[0]);
-             console.log(state);
-             console.log('openid为空--------- ');
-             console.log(global.wechatURL + '/wechat_oauth/getAuthorizeURL?state=' + state);
-             superagent
-                 .get(global.wechatURL + '/wechat_oauth/getAuthorizeURL?state=' + state)
-                 .end(function(err, res3) {
-                     if (res3 !== undefined && res3.ok) {
-                         res.redirect(res3.text);
-                         return;
-                     } else {
-                         console.error('微信授权错误。');
-                         logger.error('微信授权错误。');
-                         res.render('error', {});
-                     }
-                 });
-         } else {
-             console.log(' 正常请求---------- ');
-             console.log('用户信息-----------'+res4);
-             var orderId = req.query.id;
-             res.render('welcome',{'orderId':orderId});
-         }
-     });
+ // // var isPhone = true;
+ // var isPhone = false;
+ // var agentID = req.headers['user-agent'].toLowerCase().search(/(iphone|ipod|ipad|android)/);
+ // if (agentID) {
+ //     isPhone = true;
+ // } else {
+ //     isPhone = false;
+ // }
+ // var openid = req.query.openid || '';
+ // var access_token = req.query.access_token || '';
+ // superagent
+ //     .get('https://api.weixin.qq.com/sns/userinfo?access_token=' + access_token + '&openid=' + openid + '&lang=zh_CN')
+ //     .end(function(err, res4) {
+ //         if (res4.text.indexOf('errcode') > 0 && isPhone) {
+ //             var state = encodeURIComponent(('/'+req.url).split('&openid')[0]);
+ //             // var state = encodeURIComponent('/pay/pay?id=960'.split('&openid')[0]);
+ //             console.log(state);
+ //             console.log('openid为空--------- ');
+ //             console.log(global.wechatURL + '/wechat_oauth/getAuthorizeURL?state=' + state);
+ //             superagent
+ //                 .get(global.wechatURL + '/wechat_oauth/getAuthorizeURL?state=' + state)
+ //                 .end(function(err, res3) {
+ //                     if (res3 !== undefined && res3.ok) {
+ //                         res.redirect(res3.text);
+ //                         return;
+ //                     } else {
+ //                         console.error('微信授权错误。');
+ //                         logger.error('微信授权错误。');
+ //                         res.render('error', {});
+ //                     }
+ //                 });
+ //         } else {
+ //             console.log(' 正常请求---------- ');
+ //             console.log('用户信息-----------'+res4);
+ //             var orderId = req.query.id;
+             res.render('welcome');
+    //      }
+    //  });
  // res.render('welcome');
 });
 
 router.get('/welcome', function(req, res, next) {
- console.log('初始页');
- // var isPhone = true;
- var isPhone = false;
- var agentID = req.headers['user-agent'].toLowerCase().search(/(iphone|ipod|ipad|android)/);
- if (agentID) {
-     isPhone = true;
- } else {
-     isPhone = false;
- }
- var openid = req.query.openid || '';
- var access_token = req.query.access_token || '';
- superagent
-     .get('https://api.weixin.qq.com/sns/userinfo?access_token=' + access_token + '&openid=' + openid + '&lang=zh_CN')
-     .end(function(err, res4) {
-         if (res4.text.indexOf('errcode') > 0 && isPhone) {
-             var state = encodeURIComponent(('/'+req.url).split('&openid')[0]);
-             // var state = encodeURIComponent('/pay/pay?id=960'.split('&openid')[0]);
-             console.log(state);
-             console.log('openid为空--------- ');
-             console.log(global.wechatURL + '/wechat_oauth/getAuthorizeURL?state=' + state);
-             superagent
-                 .get(global.wechatURL + '/wechat_oauth/getAuthorizeURL?state=' + state)
-                 .end(function(err, res3) {
-                     if (res3 !== undefined && res3.ok) {
-                         res.redirect(res3.text);
-                         return;
-                     } else {
-                         console.error('微信授权错误。');
-                         logger.error('微信授权错误。');
-                         res.render('error', {});
-                     }
-                 });
-         } else {
-             console.log(' 正常请求---------- ');
-             console.log('用户信息-----------'+res4);
-             var orderId = req.query.id;
-             res.render('welcome',{'orderId':orderId});
-         }
-     });
+ // console.log('初始页');
+ // // var isPhone = true;
+ // var isPhone = false;
+ // var agentID = req.headers['user-agent'].toLowerCase().search(/(iphone|ipod|ipad|android)/);
+ // if (agentID) {
+ //     isPhone = true;
+ // } else {
+ //     isPhone = false;
+ // }
+ // var openid = req.query.openid || '';
+ // var access_token = req.query.access_token || '';
+ // superagent
+ //     .get('https://api.weixin.qq.com/sns/userinfo?access_token=' + access_token + '&openid=' + openid + '&lang=zh_CN')
+ //     .end(function(err, res4) {
+ //         if (res4.text.indexOf('errcode') > 0 && isPhone) {
+ //             var state = encodeURIComponent(('/'+req.url).split('&openid')[0]);
+ //             // var state = encodeURIComponent('/pay/pay?id=960'.split('&openid')[0]);
+ //             console.log(state);
+ //             console.log('openid为空--------- ');
+ //             console.log(global.wechatURL + '/wechat_oauth/getAuthorizeURL?state=' + state);
+ //             superagent
+ //                 .get(global.wechatURL + '/wechat_oauth/getAuthorizeURL?state=' + state)
+ //                 .end(function(err, res3) {
+ //                     if (res3 !== undefined && res3.ok) {
+ //                         res.redirect(res3.text);
+ //                         return;
+ //                     } else {
+ //                         console.error('微信授权错误。');
+ //                         logger.error('微信授权错误。');
+ //                         res.render('error', {});
+ //                     }
+ //                 });
+ //         } else {
+ //             console.log(' 正常请求---------- ');
+ //             console.log('用户信息-----------'+res4);
+ //             var orderId = req.query.id;
+             res.render('welcome');
+ //         }
+ //     });
 });
 
 router.get('/page_thailand', function(req, res, next) {
