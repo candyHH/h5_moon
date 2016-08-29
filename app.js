@@ -34,16 +34,25 @@ app.use(function(req, res, next) {
 
 // error handlers
 
-// development error handler
-// will print stacktrace
-if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
-    });
-  });
+//需要在各自的环境运行 export NODE_ENV=development
+
+if (app.get('env') === 'development'){
+  //开发环境
+	global.baseURL = 'http://dev.lalocal.cn:8080';
+  global.wechatURL = 'http://dev.lalocal.cn/wexin';
+  global.browserURL = 'https://dev.lalocal.cn/wechat';//浏览器实际url
+}else if (app.get('env') === 'production'){
+	// 生产环境
+	global.baseURL = 'http://10.117.198.127:8080';
+  global.wechatURL = 'http://node.lalocal.cn';
+  global.browserURL = 'https://h5.lalocal.cn';
+}else if (app.get('env') === 'localhost'){
+	// 本地
+	global.baseURL = 'http://dev.lalocal.cn:8080';
+  global.wechatURL = 'http://node.lalocal.cn';
+  global.browserURL = 'https://h5.lalocal.cn';
+}else{
+	global.baseURL = 'http://dev.lalocal.cn:8080';
 }
 
 // production error handler
