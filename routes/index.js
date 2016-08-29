@@ -47,7 +47,7 @@ router.get('/', function(req, res, next) {
  //             console.log(' 正常请求---------- ');
  //             console.log('用户信息-----------'+res4);
  //             var orderId = req.query.id;
-             res.render('welcome');
+             res.render('welcome',{'customInfo':'张三'});
     //      }
     //  });
  // res.render('welcome');
