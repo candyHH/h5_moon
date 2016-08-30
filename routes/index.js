@@ -4,6 +4,8 @@ const superagent = require('superagent');
 const redis = require('redis');
 var config = require('../config.js');
 
+var session = require('express-session');
+
 // var client  = redis.createClient(config.redis.port, '127.0.0.1');
 // console.log(config.redis.pwd);
 
