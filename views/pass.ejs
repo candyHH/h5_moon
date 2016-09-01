@@ -4,12 +4,34 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
     <meta name="format-detection" content="telephone=no" />
-    <link rel="stylesheet" href="stylesheets/index.css">
+    <link rel="stylesheet" href="stylesheets/pass.css">
   </head>
   <body>
-    <p>恭喜通关</p>
+    <div class="container pass-bg">
+      <div class="top">
+        <img src="images/图22-04.png">
+      </div>
+      <div class="middle-box">
+        <div class="middle pass-btn">
+          <img src="images/图22-03-51.png">
+        </div>
+      </div>
+      
+      <div class="bottom">
+        <img src="images/图22-03-52.png">
+      </div>
+    </div>
+    
   </body>
 
+  <script src="javascripts/jquery-1.10.1.min.js"></script>
+  <script src="javascripts/layer/layer.js"></script>
+  <script>
+    // 点击参与抽奖，
+    $('.pass-btn').click(function(){
+      
+    })
+  </script>
   <script>
     // 保存当前页码到sessionStorage
     var pageNum = sessionStorage.getItem('page');

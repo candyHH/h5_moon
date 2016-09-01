@@ -112,25 +112,61 @@ router.get('/welcome', function(req, res, next) {
 router.get('/page_thailand', function(req, res, next) {
  res.render('page_thailand');
 });
+router.get('/wrong_thailand', function(req, res, next) {
+ res.render('wrong_thailand');
+});
+router.get('/share_thailand', function(req, res, next) {
+ res.render('share_thailand');
+});
 
 router.get('/page_korea', function(req, res, next) {
  res.render('page_korea') ;
+});
+router.get('/wrong_korea', function(req, res, next) {
+ res.render('wrong_korea');
+});
+router.get('/share_korea', function(req, res, next) {
+ res.render('share_korea');
 });
 
 router.get('/page_japan', function(req, res, next) {
  res.render('page_japan');
 });
+router.get('/wrong_japan', function(req, res, next) {
+ res.render('wrong_japan');
+});
+router.get('/share_japan', function(req, res, next) {
+ res.render('share_japan');
+});
 
 router.get('/page_britain', function(req, res, next) {
  res.render('page_britain');
+});
+router.get('/wrong_britain', function(req, res, next) {
+ res.render('wrong_britain');
+});
+router.get('/share_britain', function(req, res, next) {
+ res.render('share_britain');
 });
 
 router.get('/page_american', function(req, res, next) {
  res.render('page_american');
 });
+router.get('/wrong_american', function(req, res, next) {
+ res.render('wrong_american');
+});
+router.get('/share_american', function(req, res, next) {
+ res.render('share_american');
+});
 
 router.get('/page_dubai', function(req, res, next) {
  res.render('page_dubai');
+});
+router.get('/wrong_dubai', function(req, res, next) {
+ res.render('wrong_dubai');
+});
+router.get('/share_dubai', function(req, res, next) {
+ res.render('share_dubai');
 });
 
 router.get('/pass', function(req, res, next) {
@@ -138,12 +174,10 @@ router.get('/pass', function(req, res, next) {
 });
 
 
-router.get('/wrong_thailand', function(req, res, next) {
- res.render('wrong_thailand');
-});
-router.get('/share_thailand', function(req, res, next) {
- res.render('share_thailand');
-});
+
+
+
+
 
 
 module.exports = router;

@@ -37,6 +37,7 @@ img{
 
 .top{
 	padding-top: 33px;
+	/*height: 33%;*/
 }
 .top-img{
 	width: 77%;
@@ -67,6 +68,7 @@ td{
 .bottom{
 	/*background-color: #f4e340;*/
 	padding-top: 10px;
+	/*height:67%;*/
 
 	/*margin: 0 8%;*/
 }
@@ -90,20 +92,8 @@ td{
 }
 
 .selected{
-	/*border: 1px solid transparent;*/
-	/*border-radius: 5px;*/
 	width: 120%;
 	margin: 0 -10% 25px;
-	/*box-shadow: 10px 10px 5px #888888;*/
-	/*margin-right: -15px;*/
-	/*margin-bottom: -5px;*/
 }
-.selected>img{
-	/*border: 2px solid red;*/
-	/*margin-right: -15px;*/
-	/*margin-bottom: -5px;*/
-
-}
-
 
 

@@ -6,8 +6,6 @@
     <meta name="format-detection" content="telephone=no" />
     <link rel="stylesheet" href="stylesheets/pages.css">
     <link rel="stylesheet" href="stylesheets/page_dubai.css">
-
-   
   </head>
 
   <body>
@@ -74,59 +72,20 @@
           </table>
           
         </div>
-        <div class="sub-btn">
-          <img src="images/page6/图7-04.png">
+        <div class="join-btn">
+          <img src="images/page6/图23-50.png">
         </div>
       </div>
     </div>
   </body>
 
-
-
   <script src="javascripts/jquery-1.10.1.min.js"></script>
   <script src="javascripts/layer/layer.js"></script>
   <script>
-    // 选项被点击
-    $('.choice-q').click(function (){
-      // $('.choice-q').removeClass('selected')
-      $(this).toggleClass('selected');
-    })
-
-    // 点击提交
-    $('.sub-btn').click(function(){
-      var anser = $('.selected').attr('id');
-      console.log(anser);
-      if (anser == null || anser == undefined) {
-        // alert ('请选择！');
-        // layer.msg('请选择！');
-        layer.open({
-          content: '请选择！'
-          ,skin: 'msg'
-          ,time: 2 //2秒后自动关闭
-        });
-      } else if (anser == 'b'){
-        window.location.href='page_dubai';
-      } else {
-        window.location.href='wrong_american';
-      }
+    // 点击我要参与
+    $('.join-btn').click(function(){
+      window.location.href='welcome';
     })
   </script>
 
-
-  <script>
-    // 保存当前页码到sessionStorage
-    var pageNum = sessionStorage.getItem('page');
-    console.log(pageNum);
-    if (pageNum == null || pageNum == 0) {
-      window.location.href="/";
-    } else if (pageNum ==5 || pageNum > 5) {
-      pageNum = 6;
-      sessionStorage.setItem('page',pageNum);
-        console.log(sessionStorage.getItem('page'));
-    };
-    // console.log(pageNum);
-  </script>
 </html>
-
-
-
