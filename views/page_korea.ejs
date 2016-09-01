@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" href="stylesheets/pages.css">
+    <link rel="stylesheet" href="stylesheets/page_korea.css">
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="top">
+        <div class="top-score rt">
+          <table class="top-score-table">
+            <tr>
+              <td class="now-score">100</td>
+              <td>200</td>
+              <td>300</td>
+              <td>400</td>
+              <td>恭喜通关</td>
+            </tr>
+          </table>
+        </div>
+        <div class="top-img">
+          <img src="images/page2/图3-09.png">
+        </div>
+        <!-- <div class="clear"></div> -->
+      </div>
+      <div class="bottom">
+        <div class="question">
+          <img src="images/page2/图3-04-13.png">
+        </div>
+        <div class="choice">
+          <div id="a" class="choice-q choice-a">
+            <img src="images/page2/图3-04-10.png">
+          </div>
+          <div id="b" class="choice-q choice-a">
+            <img src="images/page2/图3-04-11.png">
+          </div>
+          <div id="c" class="choice-q choice-a">
+            <img src="images/page2/图3-04-12.png">
+          </div>
+        </div>
+        <div class="sub-btn">
+          <img src="images/page2/图3-05.png">
+        </div>
+      </div>
+    </div>
+  </body>
+  
+
+
+  <script src="javascripts/jquery-1.10.1.min.js"></script>
+  <script src="javascripts/layer/layer.js"></script>
+  <script>
+    // 选项被点击
+    $('.choice-q').click(function (){
+      $('.choice-q').removeClass('selected')
+      $(this).addClass('selected');
+    })
+
+    // 点击提交
+    $('.sub-btn').click(function(){
+      var anser = $('.selected').attr('id');
+      console.log(anser);
+      if (anser == null || anser == undefined) {
+        // alert ('请选择！');
+        // layer.msg('请选择！');
+        layer.open({
+          content: '请选择！'
+          ,skin: 'msg'
+          ,time: 2 //2秒后自动关闭
+        });
+      } else if (anser == 'a'){
+        window.location.href='page_japan';
+      } else {
+        window.location.href='wrong_korea';
+      }
+    })
+
+    // 点击当前积分，弹出第一层弹窗
+    // $('.now-score').click(function(){
+    //   layer.open({
+    //       type: 1
+    //       ,content: '
+    //                   <img src="images/图8-05.png">
+    //                   <img src="images/图8-04.png">
+    //                   <img src="images/图8-03.png">
+
+    //                   '
+    //       ,anim: 'up'
+    //       ,style: 'backgroud-color: transparent; margin:auto 10%;'
+    //     });
+
+    // })
+  </script>
+
+  <script>
+    // 保存当前页码到sessionStorage
+    var pageNum = sessionStorage.getItem('page');
+    console.log(pageNum);
+    if (pageNum == null || pageNum == 0) {
+    	window.location.href="/";
+    } else if (pageNum ==1 || pageNum > 1) {
+    	pageNum =2;
+    	sessionStorage.setItem('page',pageNum);
+        console.log(sessionStorage.getItem('page'));
+    };
+    // console.log(pageNum);
+  </script>
+
+</html>

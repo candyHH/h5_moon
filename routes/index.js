@@ -4,14 +4,26 @@ const superagent = require('superagent');
 const redis = require('redis');
 var config = require('../config.js');
 
-var client  = redis.createClient(config.redis.port, '127.0.0.1');
-console.log(config.redis.pwd);
+var session = require('express-session');
+
+// var client  = redis.createClient(config.redis.port, '127.0.0.1');
+// console.log(config.redis.pwd);
+
 // client.auth(config.redis.pwd);
 // client.select(config.redis.db);
 
 /* GET home page. */
+
+// var pageNUm = 0;
+
 router.get('/', function(req, res, next) {
  console.log('初始页');
+
+ 
+ // console.log('pageNum');
+ // sessionStorage.setItem('pageNum', '0');  //保存页码
+ 
+ // console.log(pageNum);
  // // var isPhone = true;
  // var isPhone = false;
  // var agentID = req.headers['user-agent'].toLowerCase().search(/(iphone|ipod|ipad|android)/);
@@ -51,9 +63,11 @@ router.get('/', function(req, res, next) {
     //      }
     //  });
  // res.render('welcome');
+
 });
 
 router.get('/welcome', function(req, res, next) {
+
  // console.log('初始页');
  // // var isPhone = true;
  // var isPhone = false;
@@ -98,30 +112,72 @@ router.get('/welcome', function(req, res, next) {
 router.get('/page_thailand', function(req, res, next) {
  res.render('page_thailand');
 });
+router.get('/wrong_thailand', function(req, res, next) {
+ res.render('wrong_thailand');
+});
+router.get('/share_thailand', function(req, res, next) {
+ res.render('share_thailand');
+});
 
 router.get('/page_korea', function(req, res, next) {
  res.render('page_korea') ;
+});
+router.get('/wrong_korea', function(req, res, next) {
+ res.render('wrong_korea');
+});
+router.get('/share_korea', function(req, res, next) {
+ res.render('share_korea');
 });
 
 router.get('/page_japan', function(req, res, next) {
  res.render('page_japan');
 });
+router.get('/wrong_japan', function(req, res, next) {
+ res.render('wrong_japan');
+});
+router.get('/share_japan', function(req, res, next) {
+ res.render('share_japan');
+});
 
 router.get('/page_britain', function(req, res, next) {
  res.render('page_britain');
+});
+router.get('/wrong_britain', function(req, res, next) {
+ res.render('wrong_britain');
+});
+router.get('/share_britain', function(req, res, next) {
+ res.render('share_britain');
 });
 
 router.get('/page_american', function(req, res, next) {
  res.render('page_american');
 });
+router.get('/wrong_american', function(req, res, next) {
+ res.render('wrong_american');
+});
+router.get('/share_american', function(req, res, next) {
+ res.render('share_american');
+});
 
 router.get('/page_dubai', function(req, res, next) {
  res.render('page_dubai');
 });
+router.get('/wrong_dubai', function(req, res, next) {
+ res.render('wrong_dubai');
+});
+router.get('/share_dubai', function(req, res, next) {
+ res.render('share_dubai');
+});
 
-router.post('/pass',function (req,res,next) {
+router.get('/pass', function(req, res, next) {
+ res.render('pass');
+});
 
 
-})
+
+
+
+
+
 
 module.exports = router;
