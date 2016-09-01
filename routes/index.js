@@ -13,8 +13,17 @@ var session = require('express-session');
 // client.select(config.redis.db);
 
 /* GET home page. */
+
+// var pageNUm = 0;
+
 router.get('/', function(req, res, next) {
  console.log('初始页');
+
+ 
+ // console.log('pageNum');
+ // sessionStorage.setItem('pageNum', '0');  //保存页码
+ 
+ // console.log(pageNum);
  // // var isPhone = true;
  // var isPhone = false;
  // var agentID = req.headers['user-agent'].toLowerCase().search(/(iphone|ipod|ipad|android)/);
@@ -54,6 +63,7 @@ router.get('/', function(req, res, next) {
     //      }
     //  });
  // res.render('welcome');
+
 });
 
 router.get('/welcome', function(req, res, next) {
@@ -123,9 +133,17 @@ router.get('/page_dubai', function(req, res, next) {
  res.render('page_dubai');
 });
 
-router.post('/pass',function (req,res,next) {
+router.get('/pass', function(req, res, next) {
+ res.render('pass');
+});
 
 
-})
+router.get('/wrong_thailand', function(req, res, next) {
+ res.render('wrong_thailand');
+});
+router.get('/share_thailand', function(req, res, next) {
+ res.render('share_thailand');
+});
+
 
 module.exports = router;
