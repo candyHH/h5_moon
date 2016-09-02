@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" href="stylesheets/pages.css">
+    <link rel="stylesheet" href="stylesheets/page_dubai.css">
+
+   
+  </head>
+
+  <body>
+    <div class="container">
+
+      <div class="top">
+        <div class="top-score rt">
+          <table class="top-score-table">
+            <tr>
+              <td>100</td>
+              <td>200</td>
+              <td>300</td>
+              <td>400</td>
+              <td class="now-score">恭喜通关</td>
+            </tr>
+          </table>
+        </div>
+        <div class="top-img">
+          <img src="images/page6/图7-07.png">
+        </div>
+        <!-- <div class="clear"></div> -->
+      </div>
+
+
+      <div class="bottom">
+        <div class="question">
+          <img src="images/page6/图7-03-36.png">
+        </div>
+        <div class="dubai-choice">
+
+          <table class="dubai-choice-table">
+            <tr>
+              <td id="a" class="choice-q">
+                <img src="images/page6/图7-03-32.png">
+              </td>
+              <td id="b" class="choice-q">
+                <img src="images/page6/图7-03-31.png">
+              </td>
+            </tr>
+
+            <tr>
+              <td id="c" class="choice-q">
+                <img src="images/page6/图7-03-33.png">
+              </td>
+              <td id="d" class="choice-q">
+                <img src="images/page6/图7-03-30.png">
+              </td>
+            </tr>
+
+            <tr>
+              <td id="e" class="choice-q">
+                <img src="images/page6/图7-03-34.png">
+              </td>
+              <td id="f" class="choice-q">
+                <img src="images/page6/图7-03-29.png">
+              </td>
+            </tr>
+
+            <tr>
+              <td id="g" class="choice-q">
+                <img src="images/page6/图7-03-35.png">
+              </td>
+            </tr>
+          </table>
+          
+        </div>
+        <div class="sub-btn">
+          <img src="images/page6/图7-04.png">
+        </div>
+      </div>
+    </div>
+  </body>
+
+
+
+  <script src="javascripts/jquery-1.10.1.min.js"></script>
+  <script src="javascripts/layer/layer.js"></script>
+  <script>
+    // 选项被点击
+    $('.choice-q').click(function (){
+      // $('.choice-q').removeClass('selected')
+      $(this).toggleClass('selected');
+    })
+
+    // 点击提交
+    $('.sub-btn').click(function(){
+      var anser = [];
+      $('.selected').each(function(){
+        anser.push($(this).attr('id'));
+      })
+      console.log(anser);
+      if (anser.length == 0) {
+        // alert ('请选择！');
+        // layer.msg('请选择！');
+        layer.open({
+          content: '请选择！'
+          ,skin: 'msg'
+          ,time: 2 //2秒后自动关闭
+        });
+      } else if (anser[0] == "d" && anser[1] == "g"){
+        window.location.href='pass';
+      } else {
+        window.location.href='wrong_dubai';
+      }
+    })
+  </script>
+
+
+  <script>
+    // 保存当前页码到sessionStorage
+    var pageNum = sessionStorage.getItem('page');
+    console.log(pageNum);
+    if (pageNum == null || pageNum == 0) {
+      window.location.href="/";
+    } else if (pageNum ==5 || pageNum > 5) {
+      pageNum = 6;
+      sessionStorage.setItem('page',pageNum);
+        console.log(sessionStorage.getItem('page'));
+    };
+    // console.log(pageNum);
+  </script>
+</html>
+
+
+

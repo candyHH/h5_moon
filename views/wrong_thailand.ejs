@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" href="stylesheets/wrong.css">
+
+   
+  </head>
+
+  <body>
+  	<section>
+      <div class="top">
+        <img src="images/page1/5.png">
+      </div>
+      <div class="middle help">
+        <img src="images/图15-04.png">
+      </div>
+      <div class="bottom">
+        <img src="images/page1/图13-04.png">
+      </div>
+    </section>
+
+  	
+  </body>
+
+
+
+  <script src="javascripts/jquery-1.10.1.min.js"></script>
+  <script src="javascripts/layer/layer.js"></script>
+  <script>
+  	 // 点击泰国，弹出二维码
+     $('.top').click(function(){
+        layer.open({
+          type: 1
+          ,content: '<img src="images/page1/图20-03.png">'
+          ,anim: 'up'
+          ,style: 'backgroud-color: transparent; margin:auto 10%;'
+        });
+     })
+
+    // 保存当前页码到sessionStorage
+    var pageNum = sessionStorage.getItem('page');
+    console.log(pageNum); //1
+    
+     // 点击‘求助好友’，弹出分享引导页面
+     $('.help').click(function(){
+      console.log('help');
+      layer.open({
+          type: 1
+          ,content: '<img class="share" src="images/6.png">'
+          ,anim: 'up'
+          ,style: 'backgroud-color: transparent; margin:auto 10%;'
+        });
+
+
+
+
+      // document.querySelector('#onMenuShareAppMessage').onclick = function () {
+      //     wx.onMenuShareAppMessage({
+      //       title: '天呐！我竟然闯关失败',
+      //       desc: '在下月饼之旅闯关失败，大侠可否助我一臂之力！',
+      //       link: 'http://movie.douban.com/subject/25785114/',
+      //       imgUrl: 'http://img3.douban.com/view/movie_poster_cover/spst/public/p2166127561.jpg',
+      //       trigger: function (res) {
+      //         layer.open({
+      //           content: '用户点击发送给朋友'
+      //           ,skin: 'msg'
+      //           ,time: 2 //2秒后自动关闭
+      //         });
+      //       },
+
+      //       success: function (res) {
+      //         layer.open({
+      //           content: '已分享'
+      //           ,skin: 'msg'
+      //           ,time: 2 //2秒后自动关闭
+      //         });
+      //       },
+
+      //       cancel: function (res) {
+      //         layer.open({
+      //           content: '已取消'
+      //           ,skin: 'msg'
+      //           ,time: 2 //2秒后自动关闭
+      //         });
+      //       },
+
+      //       fail: function (res) {
+      //         layer.open({
+      //           content: 'JSON.stringify(res)'
+      //           ,skin: 'msg'
+      //           ,time: 2 //2秒后自动关闭
+      //         });
+      //       }
+
+      //     });
+
+      //     layer.open({
+      //           content: '已注册获取“发送给朋友”状态事件'
+      //           ,skin: 'msg'
+      //           ,time: 2 //2秒后自动关闭
+      //         });
+      //   };
+
+
+
+
+     })
+  </script>
+  
+</html>

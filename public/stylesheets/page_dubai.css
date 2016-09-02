@@ -1,0 +1,34 @@
+
+.top{
+	background-color: #f65a72;
+	/*padding: 30px 20px 4px;*/
+	/*margin: 0;*/
+
+}
+
+.bottom{
+	background-color: #ff8d9e;
+}
+.dubai-choice{
+	width: 76%;
+	margin: 0 auto;
+	position: relative;
+}
+
+.choice-q{
+	border: none;
+	padding: 4px 13px;
+	width: 38%;
+	/*height: 25%;*/
+	/*text-align: center;*/
+	display: table-cell;
+}
+td.selected{
+	padding:4px 0;
+	width: 37%;
+	/*height: 30px;*/
+	margin: 0 auto;
+}
+td.selected img{
+	height: 44%;
+}
