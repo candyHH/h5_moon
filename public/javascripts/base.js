@@ -53,7 +53,7 @@ wx.ready(function() {
   });
 });
 wx.error(function(res) {
-  // alert(res.errMsg);
+  alert(res.errMsg);
 });
 wx.success(function () {
 
