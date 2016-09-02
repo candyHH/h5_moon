@@ -14,8 +14,14 @@
       <div class="top">
         <img src="images/page2/4.png">
       </div>
-      <div class="middle help">
-        <img src="images/图15-04.png">
+      <div class="middle">
+        <span class="again ">
+          <img src="images/图19.png">
+        </span>
+        <span class="help">
+          <img src="images/图15-04.png">
+        </span>
+        
       </div>
       <div class="bottom">
         <img src="images/page2/图14-02.png">
@@ -42,64 +48,15 @@
     var pageNum = sessionStorage.getItem('page');
     console.log(pageNum); //1
     
-     // 点击‘求助好友’，弹出分享引导页面
+     // 点击‘求助好友’，跳转到分享引导页面
      $('.help').click(function(){
       console.log('help');
-      layer.open({
-          type: 1
-          ,content: '<img class="share" src="images/6.png">'
-          ,anim: 'up'
-          ,style: 'backgroud-color: transparent; margin:auto 10%;'
-        });
+      window.location.href='share?pageNum=2';
+     })
 
-      wx.onMenuShareAppMessage({
-        title: '天呐！我竟然闯关失败',
-        desc: '在下月饼之旅闯关失败，大侠可否助我一臂之力！',
-        link: 'share_korea',
-        imgUrl: 'images/1.png',
-        trigger: function (res) {
-          layer.open({
-            content: '用户点击发送给朋友'
-            ,skin: 'msg'
-            ,time: 2 //2秒后自动关闭
-          });
-        },
-
-        success: function (res) {
-          layer.open({
-            content: '已分享'
-            ,skin: 'msg'
-            ,time: 2 //2秒后自动关闭
-          });
-        },
-
-        cancel: function (res) {
-          layer.open({
-            content: '已取消'
-            ,skin: 'msg'
-            ,time: 2 //2秒后自动关闭
-          });
-        },
-
-        fail: function (res) {
-          layer.open({
-            content: 'JSON.stringify(res)'
-            ,skin: 'msg'
-            ,time: 2 //2秒后自动关闭
-          });
-        }
-
-      });
-
-      layer.open({
-            content: '已注册获取“发送给朋友”状态事件'
-            ,skin: 'msg'
-            ,time: 2 //2秒后自动关闭
-          });
-
-
-
-
+      // 点击重来一次
+     $('.again').click(function(){
+      window.location.href='welcome';
      })
   </script>
   

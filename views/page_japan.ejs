@@ -49,6 +49,27 @@
         </div>
       </div>
     </div>
+
+    <!-- 点击100元  弹出层 -->
+    <div class="open container hide" >
+      <div class="open-top">
+        <img src="images/图8-06.png">
+      </div>
+      <div class="open-content">
+        <div class="content-top">
+          <img src="images/图8-05.png">
+        </div>
+        <div class="content-middle">
+          <img src="images/page3/图9.png">
+        </div>
+        <div class="content-bottom receive">
+          <img src="images/图8-03.png">
+        </div>
+      </div>
+      <!-- 点击关闭弹窗 -->
+      <div class="close">×</div>
+
+    </div>
   </body>
 
 
@@ -79,6 +100,23 @@
       } else {
         window.location.href='wrong_japan';
       }
+    })
+    // 点击当前积分，弹出第一层弹窗
+    $('.now-score').click(function(){
+      $('.open').removeClass('hide');
+    })
+    // 点击立即领取，弹出关注公众号弹窗
+    $('.receive').click(function(){
+      layer.open({
+          type: 1
+          ,content: '<img src="images/page3/图12-03.png">'
+          ,anim: 'up'
+          ,style: 'backgroud-color: transparent; margin:auto 10%;'
+        });
+    })
+    // 点击关闭弹出层
+    $('.close').click(function(){
+      $('.open').addClass('hide');
     })
   </script>
   <script>

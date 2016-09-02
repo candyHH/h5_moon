@@ -96,4 +96,69 @@ td{
 	margin: 0 -10% 25px;
 }
 
+.hide{
+	display: none;
+
+}
+.open{
+	background-image: url(../images/图1-05.png);
+	background-repeat: repeat;
+	background-size: 100% 100%;
+	position: relative;
+	padding-bottom: 70px;
+
+	position: absolute;
+	z-index: 10;
+	top: 0;
+}
+.open-top{
+	width: 55%;
+	margin: 0 auto;
+}
+.open-content{
+	width: 80%;
+	margin: -3px auto;
+	background-color: yellow;
+	border-radius: 25px;
+	padding-top: 35px;
+	padding-bottom: 1px;
+}
+.content-top{
+	width: 80%;
+	margin: 0 auto 30px;
+}
+.content-middle{
+	width: 80%;
+	margin: 0 auto;
+}
+.content-bottom{
+	width: 40%;
+	margin: 60px auto;
+}
+.close{
+	width: 20px;
+    height: 20px;
+    color: #b5a1a1;
+    border: 1px solid #9c9191;
+    border-radius: 50%;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 20px;
+}
+/*定制layer弹层样式*/
+.layui-m-layerchild{
+	background-color: transparent !important;
+}
+.layui-m-layershade{
+	/*background-color: transparent !important;*/
+	/*background-image: url(../images/图1-05.png);*/
+	background-repeat: repeat;
+	background-size: 100% 100%;
+	position: relative;
+	padding-bottom: 70px;
+}
+.layui-m-layer-msg{
+	background-color: rgba(0,0,0,.7) !important;
+}
 

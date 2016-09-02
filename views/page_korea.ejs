@@ -48,12 +48,32 @@
       </div>
     </div>
 
-    <!-- 点击100元，弹出层 -->
+    <!-- 点击100元  弹出层 -->
+    <div class="open container hide" >
+      <div class="open-top">
+        <img src="images/图8-06.png">
+      </div>
+      <div class="open-content">
+        <div class="content-top">
+          <img src="images/图8-05.png">
+        </div>
+        <div class="content-middle">
+          <img src="images/page2/图8-04.png">
+        </div>
+        <div class="content-bottom receive">
+          <img src="images/图8-03.png">
+        </div>
+      </div>
+      <!-- 点击关闭弹窗 -->
+      <div class="close">×</div>
+
+    </div>
+
 
   </body>
   <script src="javascripts/jquery-1.10.1.min.js"></script>
   <script src="javascripts/layer/layer.js"></script>
-  <script src="javascripts/layer/zepto.min.js"></script>
+  <script src="javascripts/layer/layer-mobile.js"></script>
   <script>
     // 选项被点击
     $('.choice-q').click(function (){
@@ -66,8 +86,6 @@
       var anser = $('.selected').attr('id');
       console.log(anser);
       if (anser == null || anser == undefined) {
-        // alert ('请选择！');
-        // layer.msg('请选择！');
         layer.open({
           content: '请选择！'
           ,skin: 'msg'
@@ -76,23 +94,27 @@
       } else if (anser == 'a'){
         window.location.href='page_japan';
       } else {
-        window.location.href='wrong_korea?error=korea';
+        window.location.href='wrong_korea';
       }
     })
 
     // 点击当前积分，弹出第一层弹窗
-    // $('.now-score').click(function(){
-    //   Popup.customHtml({
-    //     header:'弹出页面',
-    //     style:'width:80%',
-    //     closeBut:false,
-    //     html:'<div>这是自定义弹出的层！</div>\
-    //           <p>这里面是页面的抒写内容</p><p>页面的效果如何</p>\
-    //       <div>这是自定义弹出的层！</div>\
-    //       <div style=text-align:center><input type=button style=height:30px value=关闭窗口 onclick=closeThisPopup(this) /></div>'
-    //   });
-
-    // })
+    $('.now-score').click(function(){
+      $('.open').removeClass('hide');
+    })
+    // 点击立即领取，弹出关注公众号弹窗
+    $('.receive').click(function(){
+      layer.open({
+          type: 1
+          ,content: '<img src="images/page2/图12.png">'
+          ,anim: 'up'
+          ,style: 'backgroud-color: transparent; margin:auto 10%;'
+        });
+    })
+    // 点击关闭弹出层
+    $('.close').click(function(){
+      $('.open').addClass('hide');
+    })
   </script>
 
   <script>
