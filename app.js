@@ -39,7 +39,7 @@ app.use(function(req, res, next) {
 if (app.get('env') === 'development'){
   //开发环境
 	global.baseURL = 'http://dev.lalocal.cn:8080';
-  global.wechatURL = 'http://dev.lalocal.cn/wexin';
+  global.wechatURL = 'http://node.lalocal.cn';
   global.browserURL = 'https://dev.lalocal.cn/wechat';//浏览器实际url
 }else if (app.get('env') === 'production'){
 	// 生产环境
@@ -50,7 +50,7 @@ if (app.get('env') === 'development'){
 	// 本地
 	global.baseURL = 'http://dev.lalocal.cn:8080';
   global.wechatURL = 'http://node.lalocal.cn';
-  global.browserURL = 'https://h5.lalocal.cn';
+  global.browserURL = 'http://192.168.10.222';
 }else{
 	global.baseURL = 'http://dev.lalocal.cn:8080';
 }
