@@ -20,7 +20,7 @@
         <img src="images/图22-03-52.png">
       </div>
     </div>
-    
+
   </body>
 
   <script src="javascripts/jquery-1.10.1.min.js"></script>
@@ -28,7 +28,14 @@
   <script>
     // 点击参与抽奖，
     $('.pass-btn').click(function(){
-      
+      var pageNum= 7;
+      $.ajax({
+        type:'post',
+        url:'pass',
+        data:{
+          pageNum : pageNum
+        }
+      })
     })
   </script>
   <script>
@@ -43,7 +50,7 @@
         console.log(sessionStorage.getItem('page'));
     };
     // console.log(pageNum);
-    
+
 
   </script>
 
