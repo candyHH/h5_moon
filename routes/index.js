@@ -46,7 +46,7 @@ router.get('/', function(req, res, next) {
           } else {
               console.log(' 正常请求---------- ');
               var info = JSON.stringify(res4);
-              var username = info.req.text.nickname;
+              var username = info.text.nickname;
               console.log('用户信息-----------'+username);
               console.log('用户信息-----------'+info);
 
