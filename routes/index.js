@@ -97,9 +97,9 @@ router.get('/welcome', function(req, res, next) {
          } else {
              console.log(' 正常请求---------- ');
              var info = JSON.stringify(res4);
-             var name = JSON.stringify(res4.text.nickname);
+             var name = JSON.stringify(res4.text);
              console.log('用户信息-----------'+info);
-             console.log('用户信息-----------'+name);
+             console.log('用户信息-----------'+name[1]);
              superagent
                .get(global.wechatURL + '/wechat_api/jsconfig?url=' + shareUrl)
                .end(function(err2, res2) {
