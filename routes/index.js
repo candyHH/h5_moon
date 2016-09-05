@@ -74,7 +74,7 @@ router.get('/welcome', function(req, res, next) {
              // var state = encodeURIComponent('/pay/pay?id=960'.split('&openid')[0]);
              console.log(state);
              console.log('openid为空--------- ');
-             console.log(global.wechatURL + '/wechat_oauth/getAuthorizeURL?state=' + state);
+             console.log(global.wechatURL + '/wechat_oauth/getAuthorizeURL?state=' + state+'&finalbase='+global.browserURL);
              superagent
                  .get(global.wechatURL + '/wechat_oauth/getAuthorizeURL?state=' + state+'&finalbase='+global.browserURL)
                  .end(function(err, res3) {
