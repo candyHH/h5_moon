@@ -46,6 +46,7 @@ router.get('/', function(req, res, next) {
           } else {
               console.log(' 正常请求---------- ');
               var info = JSON.stringify(res4);
+              console.log('hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh');
               console.log('用户信息-----------'+info);
               var username = JSON.stringify(res4.text);
               console.log('用户信息-----------'+username);
