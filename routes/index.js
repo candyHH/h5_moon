@@ -3,9 +3,9 @@ var router = express.Router();
 var superagent = require('superagent');
 var redis = require('redis');
 var config = require('../config.js');
-var client  = redis.createClient(config.redis.port, '127.0.0.1');
-// console.log(config.redis.pwd);
-// client.auth(config.redis.pwd);
+var client  = redis.createClient(config.redis.port, config.redis.ip);
+console.log(config.redis.pwd);
+client.auth(config.redis.pwd);
 // client.select(config.redis.db);
 
 /* GET home page. */
