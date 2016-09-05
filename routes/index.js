@@ -121,6 +121,7 @@ router.get('/page_thailand', function(req, res, next) {
       }
     });
 });
+
 router.get('/wrong_thailand', function(req, res, next) {
     res.render('wrong_thailand');
 });
@@ -271,6 +272,7 @@ router.get('/page_american', function(req, res, next) {
 router.get('/wrong_american', function(req, res, next) {
  res.render('wrong_american');
 });
+
 router.get('/share_american', function(req, res, next) {
   var thisUrl = req.url;
   var shareUrl = encodeURIComponent((global.browserURL + thisUrl).split('#')[0]);
