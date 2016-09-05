@@ -106,6 +106,8 @@ router.get('/welcome', function(req, res, next) {
                .end(function(err2, res2) {
                  if (res2 !== undefined && res2.ok) {
                    res2.body.browserUrl = global.browserURL;
+                   var string2= JSON.stringify(res2.body);
+                   console.log('分享成功啦！'+string2);
                    res.render('welcome',res2.body);
                  } else {
                    console.error('微信分享api错误。');
