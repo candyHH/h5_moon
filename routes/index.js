@@ -47,8 +47,9 @@ router.get('/', function(req, res, next) {
               console.log(' 正常请求---------- ');
               var info = JSON.stringify(res4);
               var username = info.req.text.nickname;
-              console.log('用户信息-----------'+info);
               console.log('用户信息-----------'+username);
+              console.log('用户信息-----------'+info);
+
               superagent
                 .get(global.wechatURL + '/wechat_api/jsconfig?url=' + shareUrl)
                 .end(function(err2, res2) {
