@@ -76,7 +76,7 @@ router.get('/welcome', function(req, res, next) {
              console.log('openid为空--------- ');
              console.log(global.wechatURL + '/wechat_oauth/getAuthorizeURL?state=' + state);
              superagent
-                 .get(global.wechatURL + '/wechat_oauth/getAuthorizeURL?state=' + state+'&finalbase='+global.baseURL)
+                 .get(global.wechatURL + '/wechat_oauth/getAuthorizeURL?state=' + state+'&finalbase='+global.browserURL)
                  .end(function(err, res3) {
                      if (res3 !== undefined && res3.ok) {
                          res.redirect(res3.text);
@@ -122,7 +122,7 @@ router.get('/page_thailand', function(req, res, next) {
     });
 });
 router.get('/wrong_thailand', function(req, res, next) {
-    res.render('wrong_thailand', res2.body);
+    res.render('wrong_thailand');
 });
 
 router.get('/share_thailand', function(req, res, next) {
