@@ -367,6 +367,7 @@ router.get('/share', function(req, res, next) {
   var shareUrl = encodeURIComponent((global.browserURL + thisUrl).split('#')[0]);
   console.log(thisUrl);
   console.log(pageNum);
+  console.log(shareUrl);
   superagent
     .get(global.wechatURL + '/wechat_api/jsconfig?url=' + shareUrl)
     .end(function(err2, res2) {
