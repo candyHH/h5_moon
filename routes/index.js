@@ -48,8 +48,8 @@ router.get('/', function(req, res, next) {
               var info = JSON.stringify(res4);
               console.log('hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh');
               console.log('用户信息-----------'+info);
-              var username = JSON.stringify(res4.text);
-              console.log('用户信息-----------'+username);
+              // var username = JSON.stringify(res4.text);
+              // console.log('用户信息-----------'+username);
               superagent
                 .get(global.wechatURL + '/wechat_api/jsconfig?url=' + shareUrl)
                 .end(function(err2, res2) {
