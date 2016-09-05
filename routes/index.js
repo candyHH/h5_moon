@@ -46,12 +46,17 @@ router.get('/', function(req, res, next) {
           } else {
               console.log(' 正常请求---------- ');
               var info = JSON.stringify(res4);
-              console.log('用户信息-----------'+info);
+              var userInfo = JSON.parse(res4.text);
+             //  console.log('用户信息-----------'+info);
+             //  console.log('用户信息-----------'+userInfo.nickname);
               superagent
                 .get(global.wechatURL + '/wechat_api/jsconfig?url=' + shareUrl)
                 .end(function(err2, res2) {
                   if (res2 !== undefined && res2.ok) {
                     res2.body.browserUrl = global.browserURL;
+                    res2.body.nickname = userInfo.nickname;
+                    var string2= JSON.stringify(res2.body);
+                    console.log('分享成功啦！'+string2);
                     res.render('welcome',res2.body);
                   } else {
                     console.error('微信分享api错误。');
