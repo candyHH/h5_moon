@@ -46,10 +46,7 @@ router.get('/', function(req, res, next) {
           } else {
               console.log(' 正常请求---------- ');
               var info = JSON.stringify(res4);
-              console.log('hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh');
               console.log('用户信息-----------'+info);
-              // var username = JSON.stringify(res4.text);
-              // console.log('用户信息-----------'+username);
               superagent
                 .get(global.wechatURL + '/wechat_api/jsconfig?url=' + shareUrl)
                 .end(function(err2, res2) {
@@ -101,6 +98,7 @@ router.get('/welcome', function(req, res, next) {
              console.log(' 正常请求---------- ');
              var info = JSON.stringify(res4);
              console.log('用户信息-----------'+info);
+             console.log('用户信息-----------'+info.text.nickname);
              superagent
                .get(global.wechatURL + '/wechat_api/jsconfig?url=' + shareUrl)
                .end(function(err2, res2) {
