@@ -98,15 +98,14 @@ router.get('/welcome', function(req, res, next) {
              console.log(' 正常请求---------- ');
              var info = JSON.stringify(res4);
              var userInfo = JSON.parse(res4.text);
-            //  var name = JSON.stringify(userInfo);
-            //  var userinfo = name.json_decode();
-             console.log('用户信息-----------'+info);
-             console.log('用户信息-----------'+userInfo.nickname);
+            //  console.log('用户信息-----------'+info);
+            //  console.log('用户信息-----------'+userInfo.nickname);
              superagent
                .get(global.wechatURL + '/wechat_api/jsconfig?url=' + shareUrl)
                .end(function(err2, res2) {
                  if (res2 !== undefined && res2.ok) {
                    res2.body.browserUrl = global.browserURL;
+                   res2.body.nickname = userInfo.nickname;
                    var string2= JSON.stringify(res2.body);
                    console.log('分享成功啦！'+string2);
                    res.render('welcome',res2.body);
@@ -342,7 +341,20 @@ router.get('/share_dubai', function(req, res, next) {
 });
 
 router.get('/pass', function(req, res, next) {
- res.render('pass');
+  var thisUrl = req.url;
+  var shareUrl = encodeURIComponent((global.browserURL + thisUrl).split('#')[0]);
+  // console.log(thisUrl);
+  console.log('shareUrl.................'+(global.browserURL + thisUrl).split('#')[0]);
+  superagent
+    .get(global.wechatURL + '/wechat_api/jsconfig?url=' + shareUrl)
+    .end(function(err2, res2) {
+      if (res2 !== undefined && res2.ok) {
+        res2.body.browserUrl = global.browserURL;
+        res.render('share_dubai', res2.body);
+      } else {
+        console.error('微信分享api错误。');
+      }
+    });
 });
 
 router.post('/pass',function (req,res,next) {
