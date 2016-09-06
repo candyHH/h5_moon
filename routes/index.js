@@ -364,13 +364,13 @@ router.get('/pass', function(req, res, next) {
 
 router.post('/pass',function (req,res,next) {
   var nickname = req.body.nickname;
-  console.log(pageNum);
   console.log(nickname);
   client.select(config.redis.db,function (error) {
       if(error){
         console.log(error);
       }else{
         client.sadd('nickname',nickname);
+        console.log('增加新用户...........'+nickname);
       }
     });
 })
