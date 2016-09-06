@@ -364,7 +364,9 @@ router.get('/pass', function(req, res, next) {
 
 router.post('/pass',function (req,res,next) {
   var pageNum = req.body.pageNum;
+  var nickname = req.body.nickname;
   console.log(pageNum);
+  console.log(nickname);
 })
 
 // router.get('/show', function(req, res, next) {

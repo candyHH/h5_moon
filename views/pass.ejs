@@ -20,7 +20,7 @@
 
   <%include include_share_welcome.ejs %>
   <script src="javascripts/layer/layer.js"></script>
-  
+
   <script>
 
     // 加载本页，传递页码数和用户昵称，
@@ -34,25 +34,25 @@
       } else if (pageNum ==6 || pageNum > 6) {
         pageNum = 7;
         sessionStorage.setItem('page',pageNum);
-          console.log(sessionStorage.getItem('page'));
+        console.log(sessionStorage.getItem('page'));
       };
       // console.log(pageNum);
 
       // 发送请求
       $.ajax({
         type : 'post',
-        url : '/pass',
+        url : 'pass',
         data : {
           pageNum : pageNum,
           nickname : nickname
         }
         dataType : 'json',
-        success:function (data) {
-          console.log('you success!');
-        }
+        // success:function (data) {
+        //   console.log('you success!');
+        // }
       })
     })
-  
+
   </script>
 
 </html>
