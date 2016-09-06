@@ -21,30 +21,39 @@
   <%include include_share_welcome.ejs %>
   <script src="javascripts/layer/layer.js"></script>
   <script>
-    // 点击参与抽奖，
-    // $('.pass-btn').click(function(){
-    //   var pageNum= 7;
-    //   $.ajax({
-    //     type:'post',
-    //     url:'pass',
-    //     data:{
-    //       pageNum : pageNum
-    //     }
-    //   })
-    // })
+    // 加载本页，传递页码数和用户昵称，
+    $(document).ready(function(){
+       // 保存当前页码到sessionStorage
+      var pageNum = sessionStorage.getItem('page');
+      var nickname = sessionStorage.getItem('nickname');
+      console.log(pageNum);
+      if (pageNum == null || pageNum == 0) {
+        window.location.href="/";
+      } else if (pageNum ==6 || pageNum > 6) {
+        pageNum = 7;
+        sessionStorage.setItem('page',pageNum);
+          console.log(sessionStorage.getItem('page'));
+      };
+      // console.log(pageNum);
+
+      // 发送请求
+      $.ajax({
+        type : 'post',
+        url : '/pass',
+        data : {
+          pageNum : pageNum,
+          nickname : nickname
+        }
+        dataType : 'json',
+        success:function (data) {
+          console.log('you success!');
+        }
+      })
+    })
+   
   </script>
   <script>
-    // 保存当前页码到sessionStorage
-    var pageNum = sessionStorage.getItem('page');
-    console.log(pageNum);
-    if (pageNum == null || pageNum == 0) {
-    	window.location.href="/";
-    } else if (pageNum ==6 || pageNum > 6) {
-    	pageNum = 7;
-    	sessionStorage.setItem('page',pageNum);
-        console.log(sessionStorage.getItem('page'));
-    };
-    // console.log(pageNum);
+   
   </script>
 
 </html>
