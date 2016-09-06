@@ -22,10 +22,11 @@
   <script src="javascripts/layer/layer.js"></script>
 
   <script>
-
+     alert('你好');
     // 加载本页，传递页码数和用户昵称，
     $(document).ready(function(){
        // 保存当前页码到sessionStorage
+       alert('你好！！！！！！！');
       var pageNum = sessionStorage.getItem('page');
       var nickname = sessionStorage.getItem('nickname');
       console.log(pageNum);
@@ -36,21 +37,23 @@
         sessionStorage.setItem('page',pageNum);
         console.log(sessionStorage.getItem('page'));
       };
+
       console.log(pageNum);
-      alert(pageNum);
+
 
       // 发送请求
       $.ajax({
         type : 'post',
-        url : '/pass',
+        url : 'pass',
         data : {
           pageNum : pageNum,
           nickname : nickname
         },
         dataType : 'json'
-        // success:function (data) {
-        //   console.log('you success!');
-        // }
+        success:function (data) {
+          console.log('you success!');
+          alert('data.id....'+data.id);
+        }
       })
     })
 
