@@ -10,48 +10,60 @@ client.auth(config.redis.pwd);
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  // var thisUrl = req.url;
-  // var shareUrl = encodeURIComponent((global.browserURL + thisUrl).split('#')[0]);
-  // console.log(thisUrl);
-  // console.log('shareUrl.................'+(global.browserURL + thisUrl).split('#')[0]);
-  // var isPhone = false;
-  // var agentID = req.headers['user-agent'].toLowerCase().search(/(iphone|ipod|ipad|android)/);
-  // if (agentID) {
-  //     isPhone = true;
-  // } else {
-  //     isPhone = false;
-  // }
-  // var openid = req.query.openid || '';
-  // var access_token = req.query.access_token || '';
-  // superagent
-  //     .get('https://api.weixin.qq.com/sns/userinfo?access_token=' + access_token + '&openid=' + openid + '&lang=zh_CN')
-  //     .end(function(err, res4) {
-  //         if (res4.text.indexOf('errcode') > 0 && isPhone) {
-  //             var state = encodeURIComponent((req.url).split('&openid')[0]);
-  //             // var state = encodeURIComponent('/pay/pay?id=960'.split('&openid')[0]);
-  //             console.log(state);
-  //             console.log('openid为空--------- ');
-  //             console.log(global.wechatURL + '/wechat_oauth/getAuthorizeURL?state=' + state);
-  //             superagent
-  //                 .get(global.wechatURL + '/wechat_oauth/getAuthorizeURL?state=' + state)
-  //                 .end(function(err, res3) {
-  //                     if (res3 !== undefined && res3.ok) {
-  //                         res.redirect(res3.text);
-  //                         return;
-  //                     } else {
-  //                         console.error('微信授权错误。');
-  //                         logger.error('微信授权错误。');
-  //                         res.render('error', {});
-  //                     }
-  //                 });
-  //         } else {
-  //             console.log(' 正常请求---------- ');
-  //             var info = JSON.stringify(res4);
-  //             console.log('用户信息-----------'+res4);
-  //             var orderId = req.query.id;
-              res.render('welcome');
-  //         }
-  //     });
+  var thisUrl = req.url;
+  var shareUrl = encodeURIComponent((global.browserURL + thisUrl).split('#')[0]);
+  console.log('shareUrl.................'+(global.browserURL + thisUrl).split('#')[0]);
+  var isPhone = false;
+  var agentID = req.headers['user-agent'].toLowerCase().search(/(iphone|ipod|ipad|android)/);
+  if (agentID) {
+      isPhone = true;
+  } else {
+      isPhone = false;
+  }
+  var openid = req.query.openid || '';
+  var access_token = req.query.access_token || '';
+  superagent
+      .get('https://api.weixin.qq.com/sns/userinfo?access_token=' + access_token + '&openid=' + openid + '&lang=zh_CN')
+      .end(function(err, res4) {
+          if (res4.text.indexOf('errcode') > 0 && isPhone) {
+              var state = encodeURIComponent((req.url).split('&openid')[0]);
+              // var state = encodeURIComponent('/pay/pay?id=960'.split('&openid')[0]);
+              console.log(state);
+              console.log('openid为空--------- ');
+              console.log(global.wechatURL + '/wechat_oauth/getAuthorizeURL?state=' + state+'&finalbase='+global.browserURL);
+              superagent
+                  .get(global.wechatURL + '/wechat_oauth/getAuthorizeURL?state=' + state+'&finalbase='+global.browserURL)
+                  .end(function(err, res3) {
+                      if (res3 !== undefined && res3.ok) {
+                          res.redirect(res3.text);
+                          return;
+                      } else {
+                          console.error('微信授权错误。');
+                          logger.error('微信授权错误。');
+                          res.render('error', {});
+                      }
+                  });
+          } else {
+              console.log(' 正常请求---------- ');
+              var info = JSON.stringify(res4);
+              var userInfo = JSON.parse(res4.text);
+             //  console.log('用户信息-----------'+info);
+             //  console.log('用户信息-----------'+userInfo.nickname);
+              superagent
+                .get(global.wechatURL + '/wechat_api/jsconfig?url=' + shareUrl)
+                .end(function(err2, res2) {
+                  if (res2 !== undefined && res2.ok) {
+                    res2.body.browserUrl = global.browserURL;
+                    res2.body.nickname = userInfo.nickname;
+                    var string2= JSON.stringify(res2.body);
+                    console.log('分享成功啦！'+string2);
+                    res.render('welcome',res2.body);
+                  } else {
+                    console.error('微信分享api错误。');
+                  }
+                });
+          }
+      });
 });
 router.get('/welcome', function(req, res, next) {
  var thisUrl = req.url;
@@ -90,12 +102,17 @@ router.get('/welcome', function(req, res, next) {
          } else {
              console.log(' 正常请求---------- ');
              var info = JSON.stringify(res4);
-             console.log('用户信息-----------'+info);
+             var userInfo = JSON.parse(res4.text);
+            //  console.log('用户信息-----------'+info);
+            //  console.log('用户信息-----------'+userInfo.nickname);
              superagent
                .get(global.wechatURL + '/wechat_api/jsconfig?url=' + shareUrl)
                .end(function(err2, res2) {
                  if (res2 !== undefined && res2.ok) {
                    res2.body.browserUrl = global.browserURL;
+                   res2.body.nickname = userInfo.nickname;
+                   var string2= JSON.stringify(res2.body);
+                   console.log('分享成功啦！'+string2);
                    res.render('welcome',res2.body);
                  } else {
                    console.error('微信分享api错误。');
@@ -329,7 +346,20 @@ router.get('/share_dubai', function(req, res, next) {
 });
 
 router.get('/pass', function(req, res, next) {
- res.render('pass');
+  var thisUrl = req.url;
+  var shareUrl = encodeURIComponent((global.browserURL + thisUrl).split('#')[0]);
+  // console.log(thisUrl);
+  console.log('shareUrl.................'+(global.browserURL + thisUrl).split('#')[0]);
+  superagent
+    .get(global.wechatURL + '/wechat_api/jsconfig?url=' + shareUrl)
+    .end(function(err2, res2) {
+      if (res2 !== undefined && res2.ok) {
+        res2.body.browserUrl = global.browserURL;
+        res.render('share_dubai', res2.body);
+      } else {
+        console.error('微信分享api错误。');
+      }
+    });
 });
 
 router.post('/pass',function (req,res,next) {
@@ -367,6 +397,7 @@ router.get('/share', function(req, res, next) {
   var shareUrl = encodeURIComponent((global.browserURL + thisUrl).split('#')[0]);
   console.log(thisUrl);
   console.log(pageNum);
+  console.log(shareUrl);
   superagent
     .get(global.wechatURL + '/wechat_api/jsconfig?url=' + shareUrl)
     .end(function(err2, res2) {
