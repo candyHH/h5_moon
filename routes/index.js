@@ -364,7 +364,7 @@ router.get('/pass', function(req, res, next) {
 
 router.post('/pass',function (req,res,next) {
   var nickname = req.body.nickname;
-  console.log(nickname);
+  console.log('过关的用户'+nickname);
   client.select(config.redis.db,function (error) {
       if(error){
         console.log(error);
@@ -385,7 +385,6 @@ router.get('/show', function(req, res, next) {
         console.log(reply.length);
          res.render('show',{reply});
       });
-      // console.log(nameId);
     }
   });
 });
