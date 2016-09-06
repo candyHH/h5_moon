@@ -355,7 +355,7 @@ router.get('/pass', function(req, res, next) {
     .end(function(err2, res2) {
       if (res2 !== undefined && res2.ok) {
         res2.body.browserUrl = global.browserURL;
-        res.render('share_dubai', res2.body);
+        res.render('pass', res2.body);
       } else {
         console.error('微信分享api错误。');
       }
