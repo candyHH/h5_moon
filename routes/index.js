@@ -363,35 +363,32 @@ router.get('/pass', function(req, res, next) {
 });
 
 router.post('/pass',function (req,res,next) {
-  var pageNum = req.body.pageNum;
   var nickname = req.body.nickname;
   console.log(pageNum);
   console.log(nickname);
+  client.select(config.redis.db,function (error) {
+      if(error){
+        console.log(error);
+      }else{
+        client.sadd('nickname',nickname);
+      }
+    });
 })
 
-// router.get('/show', function(req, res, next) {
-//   var nameId;
-//   client.select('15',function (error) {
-//     if(error){
-//       console.log(error);
-//     }else{
-//       client.sadd('myset','6');
-//       client.sadd('myset','7');
-//     }
-//   });
-//   client.select('15',function (error) {
-//     if(error){
-//       console.log(error);
-//     }else{
-//       client.smembers('myset',function (err,reply) {
-//         console.log(reply);
-//         console.log(reply.length);
-//          res.render('show',{reply});
-//       });
-//       // console.log(nameId);
-//     }
-//   });
-// });
+router.get('/show', function(req, res, next) {
+  client.select(config.redis.db,function (error) {
+    if(error){
+      console.log(error);
+    }else{
+      client.smembers('nickname',function (err,reply) {
+        console.log(reply);
+        console.log(reply.length);
+         res.render('show',{reply});
+      });
+      // console.log(nameId);
+    }
+  });
+});
 
 router.get('/share', function(req, res, next) {
   var thisUrl = req.url;
