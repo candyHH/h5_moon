@@ -41,15 +41,16 @@
       // 发送请求
       $.ajax({
         type : 'post',
-        url : '/pass',
+        url : 'pass',
         data : {
           pageNum : pageNum,
           nickname : nickname
         },
         dataType : 'json'
-        // success:function (data) {
-        //   console.log('you success!');
-        // }
+        success:function (data) {
+          console.log('you success!');
+          alert('data.id....'+data.id);
+        }
       })
     })
 
