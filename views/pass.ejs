@@ -23,7 +23,6 @@
 
   <script>
     // 加载本页，传递页码数和用户昵称，
-    // $(document).ready(function(){
     window.onload = function(){
        // 保存当前页码到sessionStorage
       alert("I am an alert box!!");
@@ -39,11 +38,6 @@
         console.log(sessionStorage.getItem('page'));
       };
 
-      console.log(pageNum);
-      // console.log('pass ----------'+nickname);
-      // alert('pass ----------'+nickname);
-
-
       // 发送请求
       $.ajax({
         type : 'post',
@@ -53,10 +47,6 @@
           nickname : nickname
         },
         dataType : 'json',
-        success:function (data) {
-          console.log('you success!');
-          alert('data.id....'+data.id);
-        }
       })
     }
 
