@@ -29,11 +29,10 @@
   </body>
   <%include include_share_welcome.ejs %>
   <script>
-  window.onload = function () {
-    // 保存当前页码到sessionStorage
+  window.onload = function(){
     var name = <%=nickname%>;
-    sessionStorage.setItem('page', '0');
-    sessionStorage.setItem('nickname', name);
+    // sessionStorage.setItem('page', '0');
+    // sessionStorage.setItem('nickname', name);
     // var pageNum = sessionStorage.getItem('page');
     // var nickname = sessionStorage.getItem('nickname');
     alert('welcome ---------'+name);
