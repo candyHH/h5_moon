@@ -28,6 +28,7 @@
     </div>
   </body>
   <%include include_share_welcome.ejs %>
+  <script src="javascripts/layer/layer.js"></script>
   <script>
   window.onload = function () {
     // 保存当前页码到sessionStorage
@@ -37,6 +38,11 @@
     // var pageNum = sessionStorage.getItem('page');
     // var nickname = sessionStorage.getItem('nickname');
     alert('welcome ---------'+name);
+    layer.open({
+          content: name
+          ,skin: 'msg'
+          ,time: 2 //2秒后自动关闭
+        });
   }
   </script>
 </html>
