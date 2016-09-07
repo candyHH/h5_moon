@@ -28,6 +28,7 @@
     </div>
   </body>
   <%include include_share_welcome.ejs %>
+  <script src="javascripts/layer/layer.js"></script>
   <script>
   window.onload = function(){
     alert('我要看nickname');
@@ -36,7 +37,16 @@
     // sessionStorage.setItem('nickname', name);
     // var pageNum = sessionStorage.getItem('page');
     // var nickname = sessionStorage.getItem('nickname');
+<<<<<<< HEAD
     // alert('welcome ---------'+name);
+=======
+    alert('welcome ---------'+name);
+    layer.open({
+          content: name
+          ,skin: 'msg'
+          ,time: 2 //2秒后自动关闭
+        });
+>>>>>>> dev_test
   }
   </script>
 </html>
