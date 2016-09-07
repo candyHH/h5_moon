@@ -90,7 +90,7 @@
     // 点击提交
     $('.sub-btn').click(function(){
       var anser = $('.selected').attr('id');
-      console.log(anser);
+      // console.log(anser);
       if (anser == null || anser == undefined) {
         // alert ('请选择！');
         // layer.msg('请选择！');
@@ -128,13 +128,13 @@
   <script>
     // 保存当前页码到sessionStorage
     var pageNum = sessionStorage.getItem('page');
-    console.log(pageNum);
+    // console.log(pageNum);
     if (pageNum == null || pageNum == 0) {
       window.location.href="/";
     } else if (pageNum ==3 || pageNum > 3) {
       pageNum =4;
       sessionStorage.setItem('page',pageNum);
-        console.log(sessionStorage.getItem('page'));
+        // console.log(sessionStorage.getItem('page'));
     };
     // console.log(pageNum);
 

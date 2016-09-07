@@ -26,12 +26,14 @@
   <%include include_share_welcome.ejs %>
   <script src="javascripts/layer/layer.js"></script>
   <script>
+
   window.onload = function(){
 
     var name = '<%= nickname %>';
     sessionStorage.setItem('page', '0');
     sessionStorage.setItem('nickname', name);
-    alert('welcome ---------'+name);
+    // alert('welcome ---------'+name);
+
   }
   </script>
 </html>

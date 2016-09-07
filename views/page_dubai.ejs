@@ -119,7 +119,7 @@
       $('.selected').each(function(){
         anser.push($(this).attr('id'));
       })
-      console.log(anser);
+      // console.log(anser);
       if (anser.length == 0) {
         // alert ('请选择！');
         // layer.msg('请选择！');
@@ -158,13 +158,13 @@
   <script>
     // 保存当前页码到sessionStorage
     var pageNum = sessionStorage.getItem('page');
-    console.log(pageNum);
+    // console.log(pageNum);
     if (pageNum == null || pageNum == 0) {
       window.location.href="/";
     } else if (pageNum ==5 || pageNum > 5) {
       pageNum = 6;
       sessionStorage.setItem('page',pageNum);
-        console.log(sessionStorage.getItem('page'));
+        // console.log(sessionStorage.getItem('page'));
     };
     // console.log(pageNum);
   </script>

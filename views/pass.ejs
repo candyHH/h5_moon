@@ -23,20 +23,21 @@
 
   <script>
     // 加载本页，传递页码数和用户昵称，
+    // $(document).ready(function(){
     window.onload = function(){
        // 保存当前页码到sessionStorage
-      alert("I am an alert box!!");
       var pageNum = sessionStorage.getItem('page');
       var nickname = sessionStorage.getItem('nickname');
-      console.log(pageNum);
-      alert('nickname.......'+nickname);
+      // console.log(pageNum);
       if (pageNum == null || pageNum == 0) {
         window.location.href="/";
       } else if (pageNum ==6 || pageNum > 6) {
         pageNum = 7;
         sessionStorage.setItem('page',pageNum);
-        console.log(sessionStorage.getItem('page'));
+        // console.log(sessionStorage.getItem('page'));
       };
+
+
 
       // 发送请求
       $.ajax({
@@ -47,6 +48,10 @@
           nickname : nickname
         },
         dataType : 'json',
+        success:function (data) {
+          // console.log('you success!');
+          // alert('data.id....'+data.id);
+        }
       })
     }
 
