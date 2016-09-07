@@ -46,11 +46,9 @@
 
     // 保存当前页码到sessionStorage
     var pageNum = sessionStorage.getItem('page');
-    console.log(pageNum); //1
     
      // 点击‘求助好友’，弹出分享引导页面
      $('.help').click(function(){
-      console.log('help');
       window.location.href='share?pageNum=6';
      })
 
