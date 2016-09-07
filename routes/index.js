@@ -371,7 +371,6 @@ router.post('/pass',function (req,res,next) {
       }else{
         client.sadd('nickname',nickname);
         console.log('增加新用户...........'+nickname);
-        res.send({id:nickname});
       }
     });
 })

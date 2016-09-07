@@ -20,10 +20,6 @@
       </div>
       <div class="bottom">
         <img src="images/图1-04.png" alt="">
-
-      </div>
-      <div>
-            <%=nickname%>
       </div>
     </div>
   </body>
@@ -31,19 +27,11 @@
   <script src="javascripts/layer/layer.js"></script>
   <script>
   window.onload = function(){
-    alert('我要看nickname');
-    // var name = <%= nickname %>;
-    // sessionStorage.setItem('page', '0');
-    // sessionStorage.setItem('nickname', name);
-    // var pageNum = sessionStorage.getItem('page');
-    // var nickname = sessionStorage.getItem('nickname');
 
+    var name = '<%= nickname %>';
+    sessionStorage.setItem('page', '0');
+    sessionStorage.setItem('nickname', name);
     alert('welcome ---------'+name);
-    layer.open({
-          content: name
-          ,skin: 'msg'
-          ,time: 2 //2秒后自动关闭
-        });
   }
   </script>
 </html>
