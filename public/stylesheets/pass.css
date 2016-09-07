@@ -33,7 +33,7 @@ img {
 	width: 100%;
 }
 .top{
-	width: 80%;
+	width: 75%;
 	padding-top: 50px;
 	margin: 0 auto;
 }
@@ -52,6 +52,6 @@ img {
 }
 .bottom{
 	width: 74%;
-	margin: 70px auto 0;
+	margin: 65px auto -2px;
 	position: relative;
 }
