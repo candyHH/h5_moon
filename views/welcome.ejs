@@ -20,23 +20,16 @@
       </div>
       <div class="bottom">
         <img src="images/图1-04.png" alt="">
-
-      </div>
-      <div>
-            <%=nickname%>
       </div>
     </div>
   </body>
   <%include include_share_welcome.ejs %>
   <script>
   window.onload = function(){
-    alert('我要看nickname');
-    // var name = <%= nickname %>;
-    // sessionStorage.setItem('page', '0');
-    // sessionStorage.setItem('nickname', name);
-    // var pageNum = sessionStorage.getItem('page');
-    // var nickname = sessionStorage.getItem('nickname');
-    // alert('welcome ---------'+name);
+    var name = '<%= nickname %>';
+    sessionStorage.setItem('page', '0');
+    sessionStorage.setItem('nickname', name);
+    alert('welcome ---------'+name);
   }
   </script>
 </html>
