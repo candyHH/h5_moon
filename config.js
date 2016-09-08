@@ -6,7 +6,7 @@ var localhost = {
 		port : 6379,
 		ip : 'dev.lalocal.cn',
 		pwd : 'lalocal',
-		db : 1
+		db : 3
 	}
 };
 
@@ -26,7 +26,7 @@ var dev = {
 			port : 6379,
 			ip : 'dev.lalocal.cn',
 			pwd : 'lalocal',
-			db : 1
+			db : 3
 		}
 	};
 
