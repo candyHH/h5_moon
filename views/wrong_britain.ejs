@@ -15,13 +15,12 @@
         <img src="images/page4/2.png">
       </div>
       <div class="middle">
-        <span class="again ">
+        <div class="again hide">
           <img src="images/图19.png">
-        </span>
-        <span class="help">
+        </div>
+        <div class="help hide">
           <img src="images/图15-04.png">
-        </span>
-
+        </div>
       </div>
       <div class="bottom">
         <img src="images/page4/图16-05.png">
@@ -52,9 +51,15 @@
       window.location.href='share?pageNum=4';
      })
 
-     // 点击重来一次
+     // 分享成功  按钮换成“再来一次”  并连接到当前题目页面
+     var flag = '<%=flag%>';
+     if (flag == 0) {
+       $('.help').show();
+     } else if(flag == 1) {
+       $('.again').show();
+     }
      $('.again').click(function(){
-      window.location.href='welcome';
+      window.location.href='page_britain';
      })
   </script>
 

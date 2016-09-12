@@ -21,7 +21,6 @@
         <div class="help hide">
           <img src="images/图15-04.png">
         </div>
-
       </div>
       <div class="bottom">
         <img src="images/page1/图13-04.png">
@@ -55,12 +54,8 @@
      // 分享成功  按钮换成“再来一次”  并连接到当前题目页面
      var flag = '<%=flag%>';
      if (flag == 0) {
-      //  $('.help').removeClass('hide');
-       // $('.again').addClass('hide');
        $('.help').show();
      } else if(flag == 1) {
-        // $('.again').removeClass('hide');
-       // $('.help').addClass('hide');
        $('.again').show();
      }
      $('.again').click(function(){
