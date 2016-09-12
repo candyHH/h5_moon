@@ -38,13 +38,16 @@
 	  		</div>
 	  		<div class="choice">
 	  			<div id="a" class="choice-q choice-a">
-	  				<img src="images/page1/图2-04-07.png">
+            <img class="no" src="images/page1/图2-04-07.png">
+	  				<img class="sel hide" src="images/page1/h5-84.png">
 	  			</div>
 	  			<div id="b" class="choice-q choice-a">
-	  				<img src="images/page1/图2-04-08.png">
+            <img class="no" src="images/page1/图2-04-08.png">
+	  				<img class="sel hide" src="images/page1/h5-85.png">
 	  			</div>
 	  			<div id="c" class="choice-q choice-a">
-	  				<img src="images/page1/图2-04-09.png">
+            <img class="no" src="images/page1/图2-04-09.png">
+	  				<img class="sel hide" src="images/page1/h5-86.png">
 	  			</div>
 	  		</div>
 	  		<div class="sub-btn">
@@ -61,8 +64,11 @@
   <script>
   	// 选项被点击
   	$('.choice-q').click(function (){
-  		$('.choice-q').removeClass('selected')
-  		$(this).addClass('selected');
+      $('.no').show();
+      $('.sel').hide();
+  		// $('.choice-q').removeClass('selected')
+      $(this).childre('.no').hide();
+  		$(this).childre('.sel').show();
   	})
 
   	// 点击提交
