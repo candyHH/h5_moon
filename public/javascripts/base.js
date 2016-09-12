@@ -44,10 +44,6 @@ wx.config({
 });
 
 wx.ready(function() {
-  wx.onMenuShareAppMessage(shareData,
-    success:function () {
-    alert('hhhhhh');
-  });
   wx.onMenuShareTimeline(shareData);
   wx.hideMenuItems({
     menuList: ['menuItem:originPage', 'menuItem:openWithQQBrowser',
@@ -55,9 +51,18 @@ wx.ready(function() {
     ],
   });
 });
-// wx.error(function(res) {
-//   alert(res.errMsg);
-// });
-// wx.success(function () {
-//   window.location.href='<%=wrong%>'+'?flag=1';
-// })
+
+wx.onMenuShareAppMessage(shareData,
+  success:function () {
+  alert('hhhhhh');
+});
+
+
+
+    // wx.error(function(res) {
+    //   alert(res.errMsg);
+    // });
+    // wx.success(function () {
+    //   alert('hello');
+    //   // window.location.href='<%=wrong%>'+'?flag=1';
+    // })
