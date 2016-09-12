@@ -55,11 +55,13 @@
      // 分享成功  按钮换成“再来一次”  并连接到当前题目页面
      var flag = '<%=flag%>';
      if (flag == 0) {
-       $('.help').removeClass('hide');
+      //  $('.help').removeClass('hide');
        // $('.again').addClass('hide');
+       $('.help').show();
      } else if(flag == 1) {
-        $('.again').removeClass('hide');
+        // $('.again').removeClass('hide');
        // $('.help').addClass('hide');
+       $('.again').show();
      }
      $('.again').click(function(){
       window.location.href='page_thailand';
