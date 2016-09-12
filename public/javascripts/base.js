@@ -55,9 +55,9 @@ wx.ready(function() {
 
   
 });
-wx.error(function(res) {
-  alert(res.errMsg);
-});
-wx.success(function (res) {
-  alert('hhhhh');
-})
+// wx.error(function(res) {
+//   alert(res.errMsg);
+// });
+// wx.success(function (res) {
+//   alert('hhhhh');
+// })
