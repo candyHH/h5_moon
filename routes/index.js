@@ -141,6 +141,7 @@ router.get('/page_thailand', function(req, res, next) {
 
 router.get('/wrong_thailand', function(req, res, next) {
     var flag = req.query.flag;
+    console.log('flag......................'+flag);
     res.render('wrong_thailand',{flag});
 });
 
