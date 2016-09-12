@@ -55,6 +55,6 @@ wx.ready(function() {
 wx.error(function(res) {
   alert(res.errMsg);
 });
-// wx.success(function () {
-//
-// })
+wx.success(function () {
+  window.location.href='<%=wrong%>'+'?flag=1';
+})

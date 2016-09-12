@@ -15,20 +15,18 @@
         <img src="images/page1/5.png">
       </div>
       <div class="middle">
-        <span class="again ">
+        <div class="again hide">
           <img src="images/图19.png">
-        </span>
-        <span class="help">
+        </div>
+        <div class="help hide">
           <img src="images/图15-04.png">
-        </span>
+        </div>
 
       </div>
       <div class="bottom">
         <img src="images/page1/图13-04.png">
       </div>
     </section>
-
-
   </body>
 
 
@@ -36,6 +34,7 @@
   <script src="javascripts/jquery-1.10.1.min.js"></script>
   <script src="javascripts/layer/layer.js"></script>
   <script>
+
   	 // 点击泰国，弹出二维码
      $('.top').click(function(){
         layer.open({
@@ -54,10 +53,19 @@
       window.location.href='share?pageNum=1';
      })
 
-     // 点击重来一次
+     // 分享成功  按钮换成“再来一次”  并连接到当前题目页面
+     var flag = '<%=flag%>';
+     if (flag == 0) {
+       $('.help').removeClass('hide');
+       // $('.again').addClass('hide');
+     } else (flag == 1) {
+        $('.again').removeClass('hide');
+       // $('.help').addClass('hide');
+     }
      $('.again').click(function(){
-      window.location.href='welcome';
+      window.location.href='page_thailand';
      })
+     
 
   </script>
   
