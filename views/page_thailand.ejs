@@ -64,11 +64,14 @@
   <script>
   	// 选项被点击
   	$('.choice-q').click(function (){
+      $('.choice-q').removeClass('selected')
+      $(this).addClass('selected');
+      
       $('.no').show();
       $('.sel').hide();
-  		// $('.choice-q').removeClass('selected')
-      $(this).childre('.no').hide();
-  		$(this).childre('.sel').show();
+      
+      $(this).children('.no').hide();
+  		$(this).children('.sel').show();
   	})
 
   	// 点击提交
@@ -76,7 +79,6 @@
   		var anser = $('.selected').attr('id');
   		// console.log(anser);
   		if (anser == null || anser == undefined) {
-  			alert ('请选择！');
   			// layer.msg('请选择！');
   			layer.open({
 			    content: '请选择！'
