@@ -63,12 +63,9 @@ wx.ready(function() {
     ],
   });
 });
-
-
-    // wx.error(function(res) {
-    //   alert(res.errMsg);
-    // });
-    // wx.success(function () {
-    //   alert('hello');
-    //   // window.location.href='<%=wrong%>'+'?flag=1';
-    // })
+wx.error(function(res) {
+  alert(res.errMsg);
+});
+wx.success(function (res) {
+  alert('hhhhh');
+})
