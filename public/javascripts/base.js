@@ -50,7 +50,9 @@ wx.ready(function() {
     imgUrl : 'http://a4.qpic.cn/psb?/V12r8I4D1MpPWh/VDPoxJ7pB7WUrgvqv5xGFZ1cMKqT*QT1gLwqBnuxF7k!/b/dG8BAAAAAAAA&ek=1&kp=1&pt=0&bo=9QH1AfUB9QEDCC0!&sce=0-12-12&rf=viewer_311',
     link : '<%=browserUrl%>' + '<%=question%>',
     success:function () {
-      window.location.href='<%=wrong%>'+'?flag=1';
+      var wrong = '<%=wrong%>';
+      alert(wrong+'?flag=1');
+      window.location.href=wrong+'?flag=1';
     }
   });
   wx.onMenuShareTimeline(shareData);
