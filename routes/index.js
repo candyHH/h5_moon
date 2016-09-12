@@ -403,6 +403,7 @@ router.get('/share', function(req, res, next) {
         res2.body.browserUrl = global.browserURL;
         if(pageNum == 1){
           res2.body.question = '/share_thailand';
+          res2.body.wrong = '/wrong_thailand';
         }else if (pageNum == 2){
           res2.body.question = '/share_korea';
         }else if(pageNum == 3){
