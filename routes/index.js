@@ -410,22 +410,22 @@ router.get('/share', function(req, res, next) {
         res2.body.browserUrl = global.browserURL;
         if(pageNum == 1){
           res2.body.question = '/share_thailand';
-          res2.body.wrong = '/wrong_thailand';
+          res2.body.wrong = 'wrong_thailand';
         }else if (pageNum == 2){
           res2.body.question = '/share_korea';
-          res2.body.wrong = '/wrong_korea';
+          res2.body.wrong = 'wrong_korea';
         }else if(pageNum == 3){
           res2.body.question = '/share_japan';
-          res2.body.wrong = '/wrong_japan';
+          res2.body.wrong = 'wrong_japan';
         }else if(pageNum == 4){
           res2.body.question = '/share_britain';
-          res2.body.wrong = '/wrong_britain';
+          res2.body.wrong = 'wrong_britain';
         }else if (pageNum == 5){
           res2.body.question = '/share_american';
-          res2.body.wrong = '/wrong_american';
+          res2.body.wrong = 'wrong_american';
         }else if(pageNum == 6){
           res2.body.question = '/share_dubai';
-          res2.body.wrong = '/wrong_dubai';
+          res2.body.wrong = 'wrong_dubai';
         }
         var string2= JSON.stringify(res2.body);
         console.log('分享成功啦！'+string2);

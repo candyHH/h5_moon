@@ -51,6 +51,9 @@ wx.ready(function() {
       'menuItem:copyUrl', 'menuItem:openWithSafari'
     ],
   });
+
+
+  
 });
 wx.error(function(res) {
   alert(res.errMsg);
