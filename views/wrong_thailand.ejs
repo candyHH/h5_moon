@@ -18,7 +18,7 @@
         <div class="again hide">
           <img src="images/图19.png">
         </div>
-        <div class="help hide">
+        <div class="help">
           <img src="images/图15-04.png">
         </div>
 
@@ -57,10 +57,10 @@
      alert(flag);
      if (flag == 0) {
        $('.help').removeClass('hide');
-       // $('.again').addClass('hide');
-     } else (flag == 1) {
+       $('.again').addClass('hide');
+     } else if(flag == 1) {
         $('.again').removeClass('hide');
-       // $('.help').addClass('hide');
+       $('.help').addClass('hide');
      }
      $('.again').click(function(){
       window.location.href='page_thailand';
