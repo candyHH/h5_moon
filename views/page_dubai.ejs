@@ -79,7 +79,7 @@
 
             <tr>
               <td id="g" class="choice-q">
-                <img src="images/page6/图7-03-35.png">
+                <img class="no" src="images/page6/图7-03-35.png">
                 <img class="sel hide" src="images/page6/h5-73.png">
 
               </td>
@@ -122,14 +122,12 @@
   <script>
     // 选项被点击
     $('.choice-q').click(function (){
-      $('.choice-q').removeClass('selected')
-      $(this).addClass('selected');
+      $('.choice-q').toggleClass('selected')
       
-      $('.no').show();
-      $('.sel').hide();
+      $('.no').toggleClass('hide');
+      $('.sel').toggleClass('hide');
       
-      $(this).children('.no').hide();
-      $(this).children('.sel').show();
+     
     })
 
     // 点击提交
