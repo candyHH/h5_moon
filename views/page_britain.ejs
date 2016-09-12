@@ -38,13 +38,16 @@
         </div>
         <div class="choice">
           <div id="a" class="choice-q choice-a britain-choice">
-            <img src="images/page4/图5-05-23.png">
+            <img class="no" src="images/page4/图5-05-23.png">
+            <img class="sel hide" src="images/page4/h5-78.png">
           </div>
           <div id="b" class="choice-q choice-a britain-choice">
-            <img src="images/page4/图5-05-24.png">
+            <img class="no" src="images/page4/图5-05-24.png">
+            <img class="sel hide" src="images/page4/h5-77.png">
           </div>
           <div id="c" class="choice-q choice-a britain-choice">
-            <img src="images/page4/图5-05-25.png">
+            <img class="no" src="images/page4/图5-05-25.png">
+            <img class="sel hide" src="images/page4/h5-76.png">
           </div>
         </div>
         <div class="sub-btn">
@@ -85,6 +88,12 @@
     $('.choice-q').click(function (){
       $('.choice-q').removeClass('selected')
       $(this).addClass('selected');
+      
+      $('.no').show();
+      $('.sel').hide();
+      
+      $(this).children('.no').hide();
+      $(this).children('.sel').show();
     })
 
     // 点击提交

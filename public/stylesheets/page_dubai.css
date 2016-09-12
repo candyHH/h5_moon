@@ -23,12 +23,12 @@
 	/*text-align: center;*/
 	display: table-cell;
 }
-td.selected{
+/*td.selected{
 	padding:4px 0;
 	width: 37%;
-	/*height: 30px;*/
+	height: 30px;
 	margin: 0 auto;
 }
 td.selected img{
 	height: 44%;
-}
+}*/

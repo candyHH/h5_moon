@@ -41,34 +41,47 @@
           <table class="dubai-choice-table">
             <tr>
               <td id="a" class="choice-q">
-                <img src="images/page6/图7-03-32.png">
+                <img class="no" src="images/page6/图7-03-32.png">
+                <img class="sel hide" src="images/page6/h5-74.png">
               </td>
               <td id="b" class="choice-q">
-                <img src="images/page6/图7-03-31.png">
+                <img class="no" src="images/page6/图7-03-31.png">
+                <img class="sel hide" src="images/page6/h5-69.png">
+
               </td>
             </tr>
 
             <tr>
               <td id="c" class="choice-q">
-                <img src="images/page6/图7-03-33.png">
+                <img class="no" src="images/page6/图7-03-33.png">
+                <img class="sel hide" src="images/page6/h5-75.png">
+
               </td>
               <td id="d" class="choice-q">
-                <img src="images/page6/图7-03-30.png">
+                <img class="no" src="images/page6/图7-03-30.png">
+                <img class="sel hide" src="images/page6/h5-70.png">
+
               </td>
             </tr>
 
             <tr>
               <td id="e" class="choice-q">
-                <img src="images/page6/图7-03-34.png">
+                <img class="no" src="images/page6/图7-03-34.png">
+                <img class="sel hide" src="images/page6/h5-72.png">
+
               </td>
               <td id="f" class="choice-q">
-                <img src="images/page6/图7-03-29.png">
+                <img class="no" src="images/page6/图7-03-29.png">
+                <img class="sel hide" src="images/page6/h5-71.png">
+
               </td>
             </tr>
 
             <tr>
               <td id="g" class="choice-q">
                 <img src="images/page6/图7-03-35.png">
+                <img class="sel hide" src="images/page6/h5-73.png">
+
               </td>
             </tr>
           </table>
@@ -109,8 +122,14 @@
   <script>
     // 选项被点击
     $('.choice-q').click(function (){
-      // $('.choice-q').removeClass('selected')
-      $(this).toggleClass('selected');
+      $('.choice-q').removeClass('selected')
+      $(this).addClass('selected');
+      
+      $('.no').show();
+      $('.sel').hide();
+      
+      $(this).children('.no').hide();
+      $(this).children('.sel').show();
     })
 
     // 点击提交
