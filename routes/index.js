@@ -140,7 +140,8 @@ router.get('/page_thailand', function(req, res, next) {
 });
 
 router.get('/wrong_thailand', function(req, res, next) {
-    res.render('wrong_thailand');
+    var flag = req.query.flag;
+    res.render('wrong_thailand',flag);
 });
 
 router.get('/share_thailand', function(req, res, next) {
@@ -177,7 +178,8 @@ router.get('/page_korea', function(req, res, next) {
     });
 });
 router.get('/wrong_korea', function(req, res, next) {
- res.render('wrong_korea');
+  var flag = req.query.flag;
+ res.render('wrong_korea',flag);
 });
 router.get('/share_korea', function(req, res, next) {
   var thisUrl = req.url;
@@ -214,7 +216,8 @@ router.get('/page_japan', function(req, res, next) {
 });
 
 router.get('/wrong_japan', function(req, res, next) {
- res.render('wrong_japan');
+  var flag = req.query.flag;
+ res.render('wrong_japan',flag);
 });
 
 router.get('/share_japan', function(req, res, next) {
@@ -251,7 +254,8 @@ router.get('/page_britain', function(req, res, next) {
     });
 });
 router.get('/wrong_britain', function(req, res, next) {
- res.render('wrong_britain');
+  var flag = req.query.flag;
+ res.render('wrong_britain',flag);
 });
 router.get('/share_britain', function(req, res, next) {
   var thisUrl = req.url;
@@ -287,7 +291,8 @@ router.get('/page_american', function(req, res, next) {
    });
 });
 router.get('/wrong_american', function(req, res, next) {
- res.render('wrong_american');
+  var flag = req.query.flag;
+ res.render('wrong_american',flag);
 });
 
 router.get('/share_american', function(req, res, next) {
@@ -325,7 +330,8 @@ router.get('/page_dubai', function(req, res, next) {
 });
 
 router.get('/wrong_dubai', function(req, res, next) {
- res.render('wrong_dubai');
+  var flag = req.query.flag;
+ res.render('wrong_dubai',flag);
 });
 
 router.get('/share_dubai', function(req, res, next) {
@@ -406,14 +412,19 @@ router.get('/share', function(req, res, next) {
           res2.body.wrong = '/wrong_thailand';
         }else if (pageNum == 2){
           res2.body.question = '/share_korea';
+          res2.body.wrong = '/wrong_korea';
         }else if(pageNum == 3){
           res2.body.question = '/share_japan';
+          res2.body.wrong = '/wrong_japan';
         }else if(pageNum == 4){
           res2.body.question = '/share_britain';
+          res2.body.wrong = '/wrong_britain';
         }else if (pageNum == 5){
           res2.body.question = '/share_american';
+          res2.body.wrong = '/wrong_american';
         }else if(pageNum == 6){
           res2.body.question = '/share_dubai';
+          res2.body.wrong = '/wrong_dubai';
         }
         var string2= JSON.stringify(res2.body);
         console.log('分享成功啦！'+string2);
