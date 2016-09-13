@@ -34,7 +34,7 @@ img {
 }
 .top{
 	width: 75%;
-	padding-top: 40px;
+	padding-top: 30px;
 	margin: 0 auto;
 }
 .pass-box{
@@ -48,11 +48,11 @@ img {
 	/*margin: 0 auto;*/
 	position: absolute;
 	left: 30%;
-	top:-15px;
+	top:-13px;
 	z-index:2;
 }
 .bottom{
 	width: 77%;
-	margin: 50px auto 0;
+	margin: 40px auto 0;
 	position: relative;
 }
