@@ -14,15 +14,17 @@
   	<section>
       <div class="top">
         <img src="images/page3/3.png">
+        <div class="chakan">
+          <img src="images/chakan.png" alt="">
+        </div>
       </div>
       <div class="middle">
-        <span class="again ">
+        <div class="again hide">
           <img src="images/图19.png">
-        </span>
-        <span class="help">
+        </div>
+        <div class="help hide">
           <img src="images/图15-04.png">
-        </span>
-
+        </div>
       </div>
       <div class="bottom">
         <img src="images/page3/图15-05.png">
@@ -36,7 +38,7 @@
   <script src="javascripts/layer/layer.js"></script>
   <script>
   	 // 点击泰国，弹出二维码
-     $('.top').click(function(){
+     $('.chakan').click(function(){
         layer.open({
           type: 1
           ,content: '<img src="images/page3/图21-04.png">'
@@ -53,9 +55,15 @@
       window.location.href='share?pageNum=3';
      })
 
-     // 点击重来一次
+     // 分享成功  按钮换成“再来一次”  并连接到当前题目页面
+     var flag = '<%=flag%>';
+     if (flag == 0) {
+       $('.help').show();
+     } else if(flag == 1) {
+       $('.again').show();
+     }
      $('.again').click(function(){
-      window.location.href='welcome';
+      window.location.href='page_japan';
      })
   </script>
 

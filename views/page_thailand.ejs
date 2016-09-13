@@ -15,21 +15,9 @@
   	<div class="container">
 
   		<div class="top">
-        <div class="top-score rt">
-          <table class="top-score-table">
-            <tr>
-              <td>100</td>
-              <td>200</td>
-              <td>300</td>
-              <td>400</td>
-              <td>恭喜通关</td>
-            </tr>
-          </table>
-        </div>
         <div class="top-img">
-          <img src="images/page1/图2-02.png">
+          <img src="images/page1/h5-92.png">
         </div>
-        <!-- <div class="clear"></div> -->
       </div>
 
 
@@ -39,13 +27,16 @@
 	  		</div>
 	  		<div class="choice">
 	  			<div id="a" class="choice-q choice-a">
-	  				<img src="images/page1/图2-04-07.png">
+            <img class="no" src="images/page1/图2-04-07.png">
+	  				<img class="sel hide" src="images/page1/h5-86.png">
 	  			</div>
 	  			<div id="b" class="choice-q choice-a">
-	  				<img src="images/page1/图2-04-08.png">
+            <img class="no" src="images/page1/图2-04-08.png">
+	  				<img class="sel hide" src="images/page1/h5-85.png">
 	  			</div>
 	  			<div id="c" class="choice-q choice-a">
-	  				<img src="images/page1/图2-04-09.png">
+            <img class="no" src="images/page1/图2-04-09.png">
+	  				<img class="sel hide" src="images/page1/h5-84.png">
 	  			</div>
 	  		</div>
 	  		<div class="sub-btn">
@@ -62,8 +53,14 @@
   <script>
   	// 选项被点击
   	$('.choice-q').click(function (){
-  		$('.choice-q').removeClass('selected')
-  		$(this).addClass('selected');
+      $('.choice-q').removeClass('selected')
+      $(this).addClass('selected');
+      
+      $('.no').show();
+      $('.sel').hide();
+      
+      $(this).children('.no').hide();
+  		$(this).children('.sel').show();
   	})
 
   	// 点击提交
@@ -71,7 +68,6 @@
   		var anser = $('.selected').attr('id');
   		// console.log(anser);
   		if (anser == null || anser == undefined) {
-  			alert ('请选择！');
   			// layer.msg('请选择！');
   			layer.open({
 			    content: '请选择！'

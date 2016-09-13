@@ -1,15 +1,15 @@
 .top{
 	background-color: #12b19e;
 }
-.top .img-left{
-	width: 85%;
-	margin: 24px 0 0;
+.top>.img-right{
+	width: 77%;
+	margin: 10px 23% 0;
 }
 .bottom{
 	background-color: #0bd3bb;
 }
 
 .choice .japan-choice{
-	margin-bottom: 50px;
+	margin-bottom: 40px;
 	margin-top: 22px;
 }

@@ -14,6 +14,9 @@
   	<section>
       <div class="top">
         <img src="images/page1/5.png">
+        <div class="chakan">
+          <img src="images/chakan.png" alt="">
+        </div>
       </div>
       <div class="middle">
         <div class="again hide">
@@ -22,7 +25,6 @@
         <div class="help hide">
           <img src="images/图15-04.png">
         </div>
-
       </div>
       <div class="bottom">
         <img src="images/page1/图13-04.png">
@@ -35,8 +37,8 @@
   <script src="javascripts/jquery-1.10.1.min.js"></script>
   <script src="javascripts/layer/layer.js"></script>
   <script>
-  	 // 点击泰国，弹出二维码
-     $('.top').click(function(){
+  	 // 点击查看，弹出二维码
+     $('.chakan').click(function(){
         layer.open({
           type: 1
           ,content: '<img src="images/page1/图20-03.png">'
@@ -56,12 +58,8 @@
      // 分享成功  按钮换成“再来一次”  并连接到当前题目页面
      var flag = '<%=flag%>';
      if (flag == 0) {
-      //  $('.help').removeClass('hide');
-       // $('.again').addClass('hide');
        $('.help').show();
      } else if(flag == 1) {
-        // $('.again').removeClass('hide');
-       // $('.help').addClass('hide');
        $('.again').show();
      }
      $('.again').click(function(){

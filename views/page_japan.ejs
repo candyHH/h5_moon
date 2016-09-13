@@ -15,18 +15,7 @@
     <div class="container">
 
       <div class="top">
-        <div class="top-score rt">
-          <table class="top-score-table">
-            <tr>
-              <td>100</td>
-              <td class="now-score">200</td>
-              <td>300</td>
-              <td>400</td>
-              <td>恭喜通关</td>
-            </tr>
-          </table>
-        </div>
-        <div class="top-img img-left">
+        <div class="top-img img-right">
           <img src="images/page3/图4-06-06.png">
         </div>
         <!-- <div class="clear"></div> -->
@@ -39,14 +28,16 @@
         </div>
         <div class="choice">
           <div id="a" class="choice-q choice-a japan-choice">
-            <img src="images/page3/图4-07-17.png">
+            <img class="no" src="images/page3/图4-07-17.png">
+            <img class="sel hide" src="images/page3/h5-80.png">
           </div>
           <div id="b" class="choice-q choice-a japan-choice">
-            <img src="images/page3/图4-07-18.png">
+            <img class="no" src="images/page3/图4-07-18.png">
+            <img class="sel hide" src="images/page3/h5-79.png">
           </div>
         </div>
         <div class="sub-btn">
-          <img src="images/page3/图4-02.png">
+          <img class="no" src="images/page3/图4-02.png">
         </div>
       </div>
     </div>
@@ -83,6 +74,12 @@
     $('.choice-q').click(function (){
       $('.choice-q').removeClass('selected')
       $(this).addClass('selected');
+      
+      $('.no').show();
+      $('.sel').hide();
+      
+      $(this).children('.no').hide();
+      $(this).children('.sel').show();
     })
 
     // 点击提交

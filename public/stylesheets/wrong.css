@@ -38,12 +38,19 @@ section	{
 .top{
 	width: 73%;
 	margin: 0 auto 0;
+	position: relative;
+}
+.chakan{
+	width: 35%;
+	position: absolute;
+	bottom:10px;
+	left: 32%;
 }
 .middle{
 	/*width: 61%;*/
-	/*margin: 48px auto 0;*/
+	margin: 10px auto 0;
 	width: 40%;
-	margin: 0 auto;
+	/*margin: 0 auto;*/
 }
 /*.help,.again{
 	width: 100%;
@@ -51,7 +58,7 @@ section	{
 }*/
 .bottom{
 	width: 85%;
-	margin: 25px auto 0;
+	margin: 15px auto 0;
 }
 
 /*定制layer弹层样式*/
