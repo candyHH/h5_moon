@@ -50,7 +50,7 @@ img {
 	top:-13px;
 	z-index:2;
 }
-.bottom{
+.bottom-img{
 /*	width: 77%;
 	margin: 42px auto 0px;
 	position: relative;*/
@@ -60,7 +60,4 @@ img {
     bottom: 0;
     left: 0;
     right: 0;
-}
-.bottom-img{
-	margin-bottom: -1%;
 }
