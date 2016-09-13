@@ -36,12 +36,12 @@ img{
 }
 
 .top{
-	padding-top: 33px;
+	padding-top: 10px;
 	/*height: 33%;*/
 }
 .top-img{
 	width: 77%;
-	margin: 25px auto 0;
+	margin: 10px auto 0;
 }
 
 .top-score{
