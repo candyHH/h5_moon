@@ -40,7 +40,7 @@
       var nickname = sessionStorage.getItem('nickname');
       // console.log(pageNum);
       if (pageNum == null || pageNum == 0) {
-        window.location.href="/";
+        // window.location.href="/";
       } else if (pageNum ==6 || pageNum > 6) {
         pageNum = 7;
         sessionStorage.setItem('page',pageNum);
@@ -52,19 +52,19 @@
       // })
 
       // 发送请求
-      $.ajax({
-        type : 'post',
-        url : 'pass',
-        data : {
-          pageNum : pageNum,
-          nickname : nickname
-        },
-        dataType : 'json',
-        success:function (data) {
-          // console.log('you success!');
-          // alert('data.id....'+data.id);
-        }
-      })
+      // $.ajax({
+      //   type : 'post',
+      //   url : 'pass',
+      //   data : {
+      //     pageNum : pageNum,
+      //     nickname : nickname
+      //   },
+      //   dataType : 'json',
+      //   success:function (data) {
+      //     // console.log('you success!');
+      //     // alert('data.id....'+data.id);
+      //   }
+      // })
     }
 
   </script>
