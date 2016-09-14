@@ -16,7 +16,10 @@ client.auth(config.redis.pwd);
 /* GET home page. */
 router.get('/', function(req, res, next) {
   var thisUrl = req.url;
+  console.log(thisUrl);
+  console.log(global.browserURL + thisUrl);
   var shareUrl = encodeURIComponent((global.browserURL + thisUrl).split('#')[0]);
+  console.log(shareUrl);
   logger.info('shareUrl.................'+(global.browserURL + thisUrl).split('#')[0]);
   var isPhone = false;
   var agentID = req.headers['user-agent'].toLowerCase().search(/(iphone|ipod|ipad|android)/);
