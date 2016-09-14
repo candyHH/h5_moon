@@ -142,7 +142,7 @@ router.get('/page_thailand', function(req, res, next) {
 router.get('/wrong_thailand', function(req, res, next) {
     var flag = req.query.flag;
     console.log('flag......................'+flag);
-    res.render('wrong_thailand',{flag});
+    res.render('wrong_thailand',{flag:flag});
 });
 
 router.get('/share_thailand', function(req, res, next) {
@@ -180,7 +180,7 @@ router.get('/page_korea', function(req, res, next) {
 });
 router.get('/wrong_korea', function(req, res, next) {
   var flag = req.query.flag;
- res.render('wrong_korea',{flag});
+ res.render('wrong_korea',{flag:flag});
 });
 router.get('/share_korea', function(req, res, next) {
   var thisUrl = req.url;
@@ -218,7 +218,7 @@ router.get('/page_japan', function(req, res, next) {
 
 router.get('/wrong_japan', function(req, res, next) {
   var flag = req.query.flag;
- res.render('wrong_japan',{flag});
+ res.render('wrong_japan',{flag:flag});
 });
 
 router.get('/share_japan', function(req, res, next) {
@@ -256,7 +256,7 @@ router.get('/page_britain', function(req, res, next) {
 });
 router.get('/wrong_britain', function(req, res, next) {
   var flag = req.query.flag;
- res.render('wrong_britain',{flag});
+ res.render('wrong_britain',{flag:flag});
 });
 router.get('/share_britain', function(req, res, next) {
   var thisUrl = req.url;
@@ -293,7 +293,7 @@ router.get('/page_american', function(req, res, next) {
 });
 router.get('/wrong_american', function(req, res, next) {
   var flag = req.query.flag;
- res.render('wrong_american',{flag});
+ res.render('wrong_american',{flag:flag});
 });
 
 router.get('/share_american', function(req, res, next) {
@@ -332,7 +332,7 @@ router.get('/page_dubai', function(req, res, next) {
 
 router.get('/wrong_dubai', function(req, res, next) {
   var flag = req.query.flag;
- res.render('wrong_dubai',{flag});
+ res.render('wrong_dubai',{flag:flag});
 });
 
 router.get('/share_dubai', function(req, res, next) {
