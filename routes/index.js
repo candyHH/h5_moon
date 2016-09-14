@@ -3,8 +3,13 @@ var router = express.Router();
 var superagent = require('superagent');
 var redis = require('redis');
 var config = require('../config.js');
+
+var logger = require('../log4j').logger;  
+var logger_error = require('../log4j').logger_error;  
+
+
 var client  = redis.createClient(config.redis.port, config.redis.ip);
-console.log(config.redis.pwd);
+logger(config.redis.pwd);
 client.auth(config.redis.pwd);
 // client.select(config.redis.db);
 
@@ -12,7 +17,7 @@ client.auth(config.redis.pwd);
 router.get('/', function(req, res, next) {
   var thisUrl = req.url;
   var shareUrl = encodeURIComponent((global.browserURL + thisUrl).split('#')[0]);
-  console.log('shareUrl.................'+(global.browserURL + thisUrl).split('#')[0]);
+  logger('shareUrl.................'+(global.browserURL + thisUrl).split('#')[0]);
   var isPhone = false;
   var agentID = req.headers['user-agent'].toLowerCase().search(/(iphone|ipod|ipad|android)/);
   if (agentID) {
@@ -28,9 +33,9 @@ router.get('/', function(req, res, next) {
           if (res4.text.indexOf('errcode') > 0 && isPhone) {
               var state = encodeURIComponent((req.url).split('&openid')[0]);
               // var state = encodeURIComponent('/pay/pay?id=960'.split('&openid')[0]);
-              console.log(state);
-              console.log('openid为空--------- ');
-              console.log(global.wechatURL + '/wechat_oauth/getAuthorizeURL?state=' + state+'&finalbase='+global.browserURL);
+              logger(state);
+              logger('openid为空--------- ');
+              logger(global.wechatURL + '/wechat_oauth/getAuthorizeURL?state=' + state+'&finalbase='+global.browserURL);
               superagent
                   .get(global.wechatURL + '/wechat_oauth/getAuthorizeURL?state=' + state+'&finalbase='+global.browserURL)
                   .end(function(err, res3) {
@@ -44,11 +49,11 @@ router.get('/', function(req, res, next) {
                       }
                   });
           } else {
-              console.log(' 正常请求---------- ');
+              logger(' 正常请求---------- ');
               var info = JSON.stringify(res4);
               var userInfo = JSON.parse(res4.text);
-             //  console.log('用户信息-----------'+info);
-             //  console.log('用户信息-----------'+userInfo.nickname);
+             //  logger('用户信息-----------'+info);
+             //  logger('用户信息-----------'+userInfo.nickname);
               superagent
                 .get(global.wechatURL + '/wechat_api/jsconfig?url=' + shareUrl)
                 .end(function(err2, res2) {
@@ -56,7 +61,7 @@ router.get('/', function(req, res, next) {
                     res2.body.browserUrl = global.browserURL;
                     res2.body.nickname = userInfo.nickname;
                     var string2= JSON.stringify(res2.body);
-                    console.log('分享成功啦！'+string2);
+                    logger('分享成功啦！'+string2);
                     res.render('welcome',res2.body);
                   } else {
                     console.error('微信分享api错误。');
@@ -68,7 +73,7 @@ router.get('/', function(req, res, next) {
 router.get('/welcome', function(req, res, next) {
  var thisUrl = req.url;
  var shareUrl = encodeURIComponent((global.browserURL + thisUrl).split('#')[0]);
- console.log('shareUrl.................'+(global.browserURL + thisUrl).split('#')[0]);
+ logger('shareUrl.................'+(global.browserURL + thisUrl).split('#')[0]);
  var isPhone = false;
  var agentID = req.headers['user-agent'].toLowerCase().search(/(iphone|ipod|ipad|android)/);
  if (agentID) {
@@ -84,9 +89,9 @@ router.get('/welcome', function(req, res, next) {
          if (res4.text.indexOf('errcode') > 0 && isPhone) {
              var state = encodeURIComponent((req.url).split('&openid')[0]);
              // var state = encodeURIComponent('/pay/pay?id=960'.split('&openid')[0]);
-             console.log(state);
-             console.log('openid为空--------- ');
-             console.log(global.wechatURL + '/wechat_oauth/getAuthorizeURL?state=' + state+'&finalbase='+global.browserURL);
+             logger(state);
+             logger('openid为空--------- ');
+             logger(global.wechatURL + '/wechat_oauth/getAuthorizeURL?state=' + state+'&finalbase='+global.browserURL);
              superagent
                  .get(global.wechatURL + '/wechat_oauth/getAuthorizeURL?state=' + state+'&finalbase='+global.browserURL)
                  .end(function(err, res3) {
@@ -100,11 +105,11 @@ router.get('/welcome', function(req, res, next) {
                      }
                  });
          } else {
-             console.log(' 正常请求---------- ');
+             logger(' 正常请求---------- ');
              var info = JSON.stringify(res4);
              var userInfo = JSON.parse(res4.text);
-            //  console.log('用户信息-----------'+info);
-            //  console.log('用户信息-----------'+userInfo.nickname);
+            //  logger('用户信息-----------'+info);
+            //  logger('用户信息-----------'+userInfo.nickname);
              superagent
                .get(global.wechatURL + '/wechat_api/jsconfig?url=' + shareUrl)
                .end(function(err2, res2) {
@@ -112,7 +117,7 @@ router.get('/welcome', function(req, res, next) {
                    res2.body.browserUrl = global.browserURL;
                    res2.body.nickname = userInfo.nickname;
                    var string2= JSON.stringify(res2.body);
-                   console.log('分享成功啦！'+string2);
+                   logger('分享成功啦！'+string2);
                    res.render('welcome',res2.body);
                  } else {
                    console.error('微信分享api错误。');
@@ -125,8 +130,8 @@ router.get('/welcome', function(req, res, next) {
 router.get('/page_thailand', function(req, res, next) {
   var thisUrl = req.url;
   var shareUrl = encodeURIComponent((global.browserURL + thisUrl).split('#')[0]);
-  // console.log(thisUrl);
-  console.log('shareUrl.................'+(global.browserURL + thisUrl).split('#')[0]);
+  // logger(thisUrl);
+  logger('shareUrl.................'+(global.browserURL + thisUrl).split('#')[0]);
   superagent
     .get(global.wechatURL + '/wechat_api/jsconfig?url=' + shareUrl)
     .end(function(err2, res2) {
@@ -141,15 +146,15 @@ router.get('/page_thailand', function(req, res, next) {
 
 router.get('/wrong_thailand', function(req, res, next) {
     var flag = req.query.flag;
-    console.log('flag......................'+flag);
+    logger('flag......................'+flag);
     res.render('wrong_thailand',{flag:flag});
 });
 
 router.get('/share_thailand', function(req, res, next) {
   var thisUrl = req.url;
   var shareUrl = encodeURIComponent((global.browserURL + thisUrl).split('#')[0]);
-  // console.log(thisUrl);
-  console.log('shareUrl.................'+(global.browserURL + thisUrl).split('#')[0]);
+  // logger(thisUrl);
+  logger('shareUrl.................'+(global.browserURL + thisUrl).split('#')[0]);
   superagent
     .get(global.wechatURL + '/wechat_api/jsconfig?url=' + shareUrl)
     .end(function(err2, res2) {
@@ -165,8 +170,8 @@ router.get('/share_thailand', function(req, res, next) {
 router.get('/page_korea', function(req, res, next) {
   var thisUrl = req.url;
   var shareUrl = encodeURIComponent((global.browserURL + thisUrl).split('#')[0]);
-  // console.log(thisUrl);
-  console.log('shareUrl.................'+(global.browserURL + thisUrl).split('#')[0]);
+  // logger(thisUrl);
+  logger('shareUrl.................'+(global.browserURL + thisUrl).split('#')[0]);
   superagent
     .get(global.wechatURL + '/wechat_api/jsconfig?url=' + shareUrl)
     .end(function(err2, res2) {
@@ -185,8 +190,8 @@ router.get('/wrong_korea', function(req, res, next) {
 router.get('/share_korea', function(req, res, next) {
   var thisUrl = req.url;
   var shareUrl = encodeURIComponent((global.browserURL + thisUrl).split('#')[0]);
-  // console.log(thisUrl);
-  console.log('shareUrl.................'+(global.browserURL + thisUrl).split('#')[0]);
+  // logger(thisUrl);
+  logger('shareUrl.................'+(global.browserURL + thisUrl).split('#')[0]);
   superagent
     .get(global.wechatURL + '/wechat_api/jsconfig?url=' + shareUrl)
     .end(function(err2, res2) {
@@ -202,8 +207,8 @@ router.get('/share_korea', function(req, res, next) {
 router.get('/page_japan', function(req, res, next) {
   var thisUrl = req.url;
   var shareUrl = encodeURIComponent((global.browserURL + thisUrl).split('#')[0]);
-  // console.log(thisUrl);
-  console.log('shareUrl.................'+(global.browserURL + thisUrl).split('#')[0]);
+  // logger(thisUrl);
+  logger('shareUrl.................'+(global.browserURL + thisUrl).split('#')[0]);
   superagent
     .get(global.wechatURL + '/wechat_api/jsconfig?url=' + shareUrl)
     .end(function(err2, res2) {
@@ -224,8 +229,8 @@ router.get('/wrong_japan', function(req, res, next) {
 router.get('/share_japan', function(req, res, next) {
   var thisUrl = req.url;
   var shareUrl = encodeURIComponent((global.browserURL + thisUrl).split('#')[0]);
-  // console.log(thisUrl);
-  console.log('shareUrl.................'+(global.browserURL + thisUrl).split('#')[0]);
+  // logger(thisUrl);
+  logger('shareUrl.................'+(global.browserURL + thisUrl).split('#')[0]);
   superagent
     .get(global.wechatURL + '/wechat_api/jsconfig?url=' + shareUrl)
     .end(function(err2, res2) {
@@ -241,8 +246,8 @@ router.get('/share_japan', function(req, res, next) {
 router.get('/page_britain', function(req, res, next) {
   var thisUrl = req.url;
   var shareUrl = encodeURIComponent((global.browserURL + thisUrl).split('#')[0]);
-  // console.log(thisUrl);
-  console.log('shareUrl.................'+(global.browserURL + thisUrl).split('#')[0]);
+  // logger(thisUrl);
+  logger('shareUrl.................'+(global.browserURL + thisUrl).split('#')[0]);
   superagent
     .get(global.wechatURL + '/wechat_api/jsconfig?url=' + shareUrl)
     .end(function(err2, res2) {
@@ -261,8 +266,8 @@ router.get('/wrong_britain', function(req, res, next) {
 router.get('/share_britain', function(req, res, next) {
   var thisUrl = req.url;
   var shareUrl = encodeURIComponent((global.browserURL + thisUrl).split('#')[0]);
-  // console.log(thisUrl);
-  console.log('shareUrl.................'+(global.browserURL + thisUrl).split('#')[0]);
+  // logger(thisUrl);
+  logger('shareUrl.................'+(global.browserURL + thisUrl).split('#')[0]);
   superagent
     .get(global.wechatURL + '/wechat_api/jsconfig?url=' + shareUrl)
     .end(function(err2, res2) {
@@ -278,8 +283,8 @@ router.get('/share_britain', function(req, res, next) {
 router.get('/page_american', function(req, res, next) {
  var thisUrl = req.url;
  var shareUrl = encodeURIComponent((global.browserURL + thisUrl).split('#')[0]);
- // console.log(thisUrl);
- console.log('shareUrl.................'+(global.browserURL + thisUrl).split('#')[0]);
+ // logger(thisUrl);
+ logger('shareUrl.................'+(global.browserURL + thisUrl).split('#')[0]);
  superagent
    .get(global.wechatURL + '/wechat_api/jsconfig?url=' + shareUrl)
    .end(function(err2, res2) {
@@ -299,8 +304,8 @@ router.get('/wrong_american', function(req, res, next) {
 router.get('/share_american', function(req, res, next) {
   var thisUrl = req.url;
   var shareUrl = encodeURIComponent((global.browserURL + thisUrl).split('#')[0]);
-  // console.log(thisUrl);
-  console.log('shareUrl.................'+(global.browserURL + thisUrl).split('#')[0]);
+  // logger(thisUrl);
+  logger('shareUrl.................'+(global.browserURL + thisUrl).split('#')[0]);
   superagent
     .get(global.wechatURL + '/wechat_api/jsconfig?url=' + shareUrl)
     .end(function(err2, res2) {
@@ -316,8 +321,8 @@ router.get('/share_american', function(req, res, next) {
 router.get('/page_dubai', function(req, res, next) {
   var thisUrl = req.url;
   var shareUrl = encodeURIComponent((global.browserURL + thisUrl).split('#')[0]);
-  // console.log(thisUrl);
-  console.log('shareUrl.................'+(global.browserURL + thisUrl).split('#')[0]);
+  // logger(thisUrl);
+  logger('shareUrl.................'+(global.browserURL + thisUrl).split('#')[0]);
   superagent
     .get(global.wechatURL + '/wechat_api/jsconfig?url=' + shareUrl)
     .end(function(err2, res2) {
@@ -338,8 +343,8 @@ router.get('/wrong_dubai', function(req, res, next) {
 router.get('/share_dubai', function(req, res, next) {
   var thisUrl = req.url;
   var shareUrl = encodeURIComponent((global.browserURL + thisUrl).split('#')[0]);
-  // console.log(thisUrl);
-  console.log('shareUrl.................'+(global.browserURL + thisUrl).split('#')[0]);
+  // logger(thisUrl);
+  logger('shareUrl.................'+(global.browserURL + thisUrl).split('#')[0]);
   superagent
     .get(global.wechatURL + '/wechat_api/jsconfig?url=' + shareUrl)
     .end(function(err2, res2) {
@@ -355,8 +360,8 @@ router.get('/share_dubai', function(req, res, next) {
 router.get('/pass', function(req, res, next) {
   var thisUrl = req.url;
   var shareUrl = encodeURIComponent((global.browserURL + thisUrl).split('#')[0]);
-  // console.log(thisUrl);
-  console.log('shareUrl.................'+(global.browserURL + thisUrl).split('#')[0]);
+  // logger(thisUrl);
+  logger('shareUrl.................'+(global.browserURL + thisUrl).split('#')[0]);
   superagent
     .get(global.wechatURL + '/wechat_api/jsconfig?url=' + shareUrl)
     .end(function(err2, res2) {
@@ -371,13 +376,13 @@ router.get('/pass', function(req, res, next) {
 
 router.post('/pass',function (req,res,next) {
   var nickname = req.body.nickname;
-  console.log('过关的用户'+nickname);
+  logger('过关的用户'+nickname);
   client.select(config.redis.db,function (error) {
       if(error){
-        console.log(error);
+        logger(error);
       }else{
         client.sadd('nickname',nickname);
-        console.log('增加新用户...........'+nickname);
+        logger('增加新用户...........'+nickname);
       }
     });
 })
@@ -385,11 +390,11 @@ router.post('/pass',function (req,res,next) {
 router.get('/show', function(req, res, next) {
   client.select(config.redis.db,function (error) {
     if(error){
-      console.log(error);
+      logger(error);
     }else{
       client.smembers('nickname',function (err,reply) {
-        console.log(reply);
-        console.log(reply.length);
+        logger(reply);
+        logger(reply.length);
         res.render('show',{reply:reply});
       });
     }
@@ -400,9 +405,9 @@ router.get('/share', function(req, res, next) {
   var thisUrl = req.url;
   var pageNum = req.query.pageNum;
   var shareUrl = encodeURIComponent((global.browserURL + thisUrl).split('#')[0]);
-  console.log(thisUrl);
-  console.log(pageNum);
-  console.log(shareUrl);
+  logger(thisUrl);
+  logger(pageNum);
+  logger(shareUrl);
   superagent
     .get(global.wechatURL + '/wechat_api/jsconfig?url=' + shareUrl)
     .end(function(err2, res2) {
@@ -428,7 +433,7 @@ router.get('/share', function(req, res, next) {
           res2.body.wrong = 'wrong_dubai';
         }
         var string2= JSON.stringify(res2.body);
-        console.log('分享成功啦！'+string2);
+        logger('分享成功啦！'+string2);
         res.render('share', res2.body);
       } else {
         console.error('微信分享api错误。');
