@@ -390,7 +390,7 @@ router.get('/show', function(req, res, next) {
       client.smembers('nickname',function (err,reply) {
         console.log(reply);
         console.log(reply.length);
-         res.render('show',{reply});
+        res.render('show',{reply:reply});
       });
     }
   });
