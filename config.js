@@ -14,7 +14,7 @@ var produ = {
 		// redis数据库配置
 		redis : {
 			port : 6379,
-			ip : '10.117.54.63',
+			ip : '10.168.39.181',
 			pwd : 'lalocal',
 			db : 1
 		}
