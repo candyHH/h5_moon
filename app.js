@@ -9,7 +9,7 @@ var bodyParser = require('body-parser');
 
 var logger = require('./log4j').logger;  
 var logger_error = require('./log4j').logger_error;  
-
+logger_error.error('---app.js---');
 
 
 var app = express();
