@@ -9,7 +9,7 @@ var logger_error = require('../log4j').logger_error;
 
 
 var client  = redis.createClient(config.redis.port, config.redis.ip);
-logger.info(config.redis.pwd);
+logger.info(config.redis.pwd+'999999');
 client.auth(config.redis.pwd);
 // client.select(config.redis.db);
 
