@@ -10,8 +10,7 @@ var bodyParser = require('body-parser');
 var logger = require('./log4j').logger;  
 var logger_error = require('./log4j').logger_error;  
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
+
 
 var app = express();
 
@@ -27,12 +26,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+var routes = require('./routes/index');
+var users = require('./routes/users');
+
 app.use('/', routes);
 app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
+  logger_error.error(err);
   err.status = 404;
   next(err);
 });
